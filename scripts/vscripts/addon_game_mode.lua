@@ -11300,7 +11300,7 @@ function ChessAI(u,force_delay)
 			end)
 		end
 
-		if u.is_copied_aw ~= true and u.is_copied_kobold ~= true then
+		if u:HasAbility('arc_double') and u.is_copied_aw ~= true and u.is_copied_kobold ~= true then
 			--战斗中生成的本尊，复制本尊
 			local aposition = FindEmptyGridAtUnit(u,nil,true)
 			local team_id = u:GetTeam()
@@ -23828,9 +23828,9 @@ function DAC:DamageFilter(keys)
 		if keys.entindex_inflictor_const == nil and a:HasModifier('modifier_brewmaster_cinder_brew') and a:IsUnableToMiss() == false then
 			-- print('IsUnableToMiss=false,u='..a:GetUnitName())
 			local cinder_brew_miss_table = {
-				[1] = 30,
-				[2] = 40,
-				[3] = 50,
+				[1] = 25,
+				[2] = 50,
+				[3] = 75,
 			}
 			local cinder_brew_ability = a:FindModifierByName('modifier_brewmaster_cinder_brew'):GetAbility()
 			if cinder_brew_ability ~= nil then

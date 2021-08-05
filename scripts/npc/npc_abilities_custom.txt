@@ -13875,7 +13875,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"miss_per"	"30 40 50"
+				"miss_per"	"25 50 75"
 			}
 		}
 	}

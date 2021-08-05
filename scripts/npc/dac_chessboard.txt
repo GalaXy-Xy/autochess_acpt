@@ -5,7 +5,7 @@
 	{
 		"id"					"b101"
 		"name"					"哼哼井"
-		"vmap"					"chessboard/chessboard09"
+		"vmap"					"chessboard/chessboard12"
 	}
 	"b102"
 	{
