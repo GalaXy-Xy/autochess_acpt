@@ -5,7 +5,7 @@
 	{
 		"id"					"b101"
 		"name"					"哼哼井"
-		"vmap"					"chessboard/chessboard12"
+		"vmap"					"chessboard/chessboard09"
 	}
 	"b102"
 	{
@@ -17,7 +17,7 @@
 	{
 		"id"					"b103"
 		"name"					"翠翠林"
-		"vmap"					"chessboard/chessboard04"
+		"vmap"					"chessboard/chessboard12"
 	}
 
 	"b104"
@@ -62,6 +62,12 @@
 		"id"					"b202"
 		"name"					"灵灵洞"
 		"vmap"					"chessboard/chessboard10"
+	}
+	"b203"
+	{
+		"id"					"b203"
+		"name"					"琪琪海"
+		"vmap"					"chessboard/chessboard12"
 	}
 
 	"b301"

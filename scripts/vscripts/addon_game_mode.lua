@@ -4821,8 +4821,8 @@ function StartAPrepareRound()
 				Timers:CreateTimer(1,function()
 					--给蓝
 					local mana = math.floor(GameRules:GetGameModeEntity().battle_round/2+0.5)
-					if mana> 5 then
-						mana = 5
+					if mana> 4 then
+						mana = 4
 					end
 
 					local lixi = math.floor(v:GetMana()/10)
@@ -4934,9 +4934,14 @@ function CopyArcWarden(team)
 		local at_team_id = vv.at_team_id or vv.team_id
 		local items = GetAllItemsInUnits({[1] = vv})
 		local x = SummonAChess(vv:GetTeam(),aposition,vv:GetUnitName(),at_team_id,100,0,items,false,nil)
-		BlinkChessX({caster=x,blink_type="breaksoil"})
+		BlinkChessX({caster=x,blink_type="fall"})
+		
 		x.is_copied_aw = true
 		vv.is_copied_aw = true
+		vv.is_self_aw = true
+
+		local chess_star = GetChessStar(x) or 1
+		x:AddNewModifier(x,nil,"modifier_kill",{duration = 15*chess_star})
 	end
 end
 --钓鱼
@@ -5591,9 +5596,11 @@ function DAC:OnEntityKilled(keys)
 		local xx = Vector2X(u:GetAbsOrigin(),u.at_team_id or u.team_id)
 		local yy = Vector2Y(u:GetAbsOrigin(),u.at_team_id or u.team_id)
 
-		if u.at_team_id ~= nil or u.team_id ~= nil then
-			if u.y_x ~= nil then
-				GameRules:GetGameModeEntity().unit[u.at_team_id or u.team_id][u.y_x] = nil
+		if u.is_evolving ~= true then
+			if u.at_team_id ~= nil or u.team_id ~= nil then
+				if u.y_x ~= nil then
+					GameRules:GetGameModeEntity().unit[u.at_team_id or u.team_id][u.y_x] = nil
+				end
 			end
 		end
 		RemoveFromToBeDestroyList(u)
@@ -7840,6 +7847,11 @@ function LoadOnePVEEnemy(vi,team)
 			AddAbilityAndSetLevel(x,'root_self')
 			AddAbilityAndSetLevel(x,'jiaoxie_wudi')
 			table.insert(GameRules:GetGameModeEntity().to_be_destory_list[team],x)
+
+			local hero = TeamId2Hero(team)
+			if hero:HasModifier('modifier_item_more_creep') then
+				x.kobold_result = true
+			end
 
 			--播放后续动画
 			if animation_info.tp_sound ~= nil then
@@ -10814,7 +10826,7 @@ function LoadOneCloudChess(vi,team)
 end
 
 function EvolveAChess(u)
-	if u.evolving == true then
+	if u.evolving == true or u.evolve_result == nil then
 		return
 	end
 	u.is_evolving = true
@@ -10860,14 +10872,15 @@ function EvolveAChess(u)
 				end
 
 				local x = SummonAChess(team_id,aposition,u.evolve_result,at_team_id,100,0,{},false)
-				if shaman_6 then
-					AddAbilityAndSetLevel(x,'is_shaman_buff_plus_plus')
-				end
 				if IsUnitExist(x) then
+					if shaman_6 then
+						AddAbilityAndSetLevel(x,'is_shaman_buff_plus_plus')
+					end
 					x.no_death_rattle = true
 					x:SetHealth(x:GetMaxHealth()*hp_per)
 					EmitSoundOn("shaman.evolve",x)
 					play_particle("particles/econ/events/ti10/hero_levelup_ti10.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
+					x:AddNewModifier(x,nil,"modifier_kill",{duration = 15})
 				end
 			end
 		end
@@ -10934,13 +10947,14 @@ function ChessAI(u,force_delay)
 				local x = nil
 				if u.kobold_item == 1 then
 					x = SummonAChess(team_id,aposition,u:GetUnitName(),at_team_id,100,0,items,false)
+					x:AddNewModifier(x,nil,"modifier_kill",{duration = 30})
 				else
 					x = SummonAChess(team_id,aposition,u:GetUnitName(),at_team_id,100,0,{},false)
+					x:AddNewModifier(x,nil,"modifier_kill",{duration = 15})
 				end
 				BlinkChessX({caster=x,blink_type="breaksoil"})
 				u.kobold_result = nil
 				u.kobold_item = nil
-				x:AddNewModifier(x,nil,"modifier_kill",{duration = 15})
 				x.is_copied_kobold = true
 			end)
 		end
@@ -11336,9 +11350,15 @@ function ChessAI(u,force_delay)
 
 			--进化
 			if u.evolve_result ~= nil then
-				local evolveresult = EvolveThink(u)
-				if evolveresult then
-					return evolveresult
+				if u:HasModifier("modifier_kill") and u:HasModifier('modifier_is_shaman_buff_plus_plus') == false then
+					--有持续时间的棋子不进化
+					u.evolve_result = nil
+				else
+					--开始读条进化！
+					local evolveresult = EvolveThink(u)
+					if evolveresult then
+						return evolveresult
+					end
 				end
 			end
 
@@ -11362,7 +11382,7 @@ function ChessAI(u,force_delay)
 			end
 
 			--电狗的分身，启动设置持续时间
-			if u.is_copied_aw == true and u:HasModifier('modifier_kill') == false then
+			if u.is_copied_aw == true and u:HasModifier('modifier_kill') == false and u.is_self_aw ~= true then
 				if u:HasAbility('arc_double') then
 					local duration = GetAbilityKV(u:FindAbilityByName('arc_double'), "duration") or 10
 					u:AddNewModifier(u,nil,"modifier_kill",{duration = duration})
@@ -20844,7 +20864,7 @@ function CombineChessPlus(units, advance_unit_name)
 	MakeTiny(uu)
 
 
-	--狗头人的特殊逻辑
+	--狗头人的特殊逻辑：3星送一只
 	if IsKobold(advance_unit_name) == true and GetChessNameStar(advance_unit_name) == 3 then
 		PlayChessDialogue(uu,'devided.1')
 		Timers:CreateTimer(0.5,function()

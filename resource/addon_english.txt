@@ -3398,7 +3398,6 @@
 		"necro_archer"	"Necronomicon Archer"
 		"DOTA_Tooltip_ability_item_wangchongtui_Description"	"Equipped Chess Piece now leaps instead of walking. +5 Damage, +5 Attack Speed, +25% Evasion. +100% mana gained from dealing damage.\nEquipped Chess Piece also counts as <font color=\"#ffffff\">Aqir</font> and can be summoned by friendly Aqirs.\n<h1>Active ability: Instant</h1>Roots the highest-level enemy chess piece for 4 seconds.<br>Cooldown: <span class=\"GameplayValues GameplayVariable\">15</span> sec"
 		"DOTA_Tooltip_ability_item_wangchongtui_Lore"	"A horrifying yet useful mixture of necromancy and artificing."
-
 		"DOTA_Tooltip_ability_item_minglingshu_Description"	"+250 Health, +20% lifesteal. Attacks reduce the target's armor by 3. Restores 40 mana when battle starts.\nYour Units have +25% Helath, +25% Damage, +50% duration and +1 summoned units.\n<h1>Active ability: Instant</h1>Summons a Warrior and an Archer to fight for you.<br>Cooldown: <span class=\"GameplayValues GameplayVariable\">30</span> sec"
 		"DOTA_Tooltip_ability_item_minglingshu_Lore"	"A record of the final reckoning. With one page torn out."
 		"DOTA_Tooltip_modifier_shadow_fiend_requiem_of_souls_lua"	"Requiem of Souls"
@@ -3568,16 +3567,11 @@
 		"h376"	"Joker♦Red"
 		"h472"	"Joker♦Black"
 		"h377"	"Billingsley Loftwright"
-
 		"DOTA_Tooltip_ability_item_silingshu_2"	"<font color=\"#4b69ff\">Necronomicon</font>"
 		"DOTA_Tooltip_ability_item_silingshu_3"	"<font color=\"#4b69ff\">Necronomicon</font>"
 		"DOTA_Tooltip_ability_item_silingshu_2_Description"	"+20% lifesteal. Restores 40 mana when battle starts.\n<h1>Active ability: Instant</h1>Summons a Warrior and an Archer to fight for you that have increased health, duration and ability level based on the caster level.<br>Cooldown: <span class=\"GameplayValues GameplayVariable\">30</span> sec"
 		"DOTA_Tooltip_ability_item_silingshu_3_Description"	"+20% lifesteal. Restores 40 mana when battle starts.\n<h1>Active ability: Instant</h1>Summons a Warrior and an Archer to fight for you that have increased health, duration and ability level based on the caster level.<br>Cooldown: <span class=\"GameplayValues GameplayVariable\">30</span> sec"
-
-		"round_cloud_line6"		""
-
 		"DOTA_Tooltip_ability_br_web_Description"	"Spins a large web that roots any enemies captured and causes them to miss some of their attacks abd lose evasion. If any enemy piece die within the web, a Spiderling will be hatched from the courpse. Broodmother and all spiderlings have lifesteal attack on enemies within the web."
-
-		"DOTA_Tooltip_ability_br_web_lifesteal_per"		"Lifesteal Percentage"
+		"DOTA_Tooltip_ability_br_web_lifesteal_per"	"Lifesteal Percentage"
 	}
 }

@@ -2473,7 +2473,6 @@
 		"text_confirm_unban_chess"	"确认解除屏蔽？"
 		"DOTA_Tooltip_modifier_br_web_debuff"	"织网"
 		"DOTA_Tooltip_modifier_br_web_debuff_Description"	"在蜘蛛网中不会闪避，攻击有概率丢失，如果死亡还会孵化一只小蜘蛛。"
-		
 		"item_hongzhang_1"	"达贡之神力"
 		"item_hongzhang_2"	"达贡之神力Lv.2"
 		"item_hongzhang_3"	"达贡之神力Lv.3"
@@ -2736,9 +2735,8 @@
 		"DOTA_Tooltip_ability_is_mech_Description"	"钻研工程学的地精、侏儒、矮人工匠制造了无数的震撼人心的发明。<br><br><img src='file://{images}/custom_game/chess_icon/chess_clock.png'><img src='file://{images}/custom_game/chess_icon/chess_tk.png'><img src='file://{images}/custom_game/chess_icon/chess_shredder.png'><img src='file://{images}/custom_game/chess_icon/chess_meepo.png'><img src='file://{images}/custom_game/chess_icon/chess_gyro.png'><img src='file://{images}/custom_game/chess_icon/chess_tech.png'>"
 		"DOTA_Tooltip_ability_is_shaman_Note0"	"被妖术变形的棋子不会继承开战前结算过的种族/职业技能效果，如果变形的是友方棋子，也不会继承原棋子的装备效果。"
 		"DOTA_Tooltip_modifier_show_combo_is_human_Description"	"需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。<br>（3）人类：回合开始时获得1本知识之书。<br>（6）人类：如果主场战斗获胜且有至少1个友方人类存活，获得2本知识之书。"
-		"DOTA_Tooltip_modifier_is_troll_buff_Description"	"攻击速度+20。"
-		"DOTA_Tooltip_modifier_is_troll_buff_plus_Description"	"攻击速度+20。"
-		"localization_tips"	"=========================================20201027版本从这开始翻译========================================"
+		"DOTA_Tooltip_modifier_is_troll_buff_Description"	"攻击速度提高。"
+		"DOTA_Tooltip_modifier_is_troll_buff_plus_Description"	"攻击速度提高。"
 		"h261"	"跳跳鼠"
 		"h262"	"天猫地象"
 		"h367"	"发条陆行鸟"
@@ -3084,8 +3082,6 @@
 		"season_s11"	"S11雪狐赛季"
 		"badge_title_s11"	"徽章：S11雪狐赛季"
 		"badge_text_s11"	"在《刀塔自走棋》S11雪狐赛季中表现优异的棋手！"
-		"DOTA_Tooltip_modifier_show_combo_is_troll_Description"	"需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。<br>（2）巨魔：所有友军的攻击速度+20。<br>（4）巨魔：所有友军的攻击速度+20。<br>（6）巨魔：所有友军获得效果：每次攻击命中都会使攻击速度增加20，最多可叠加20次。"
-		"DOTA_Tooltip_ability_is_troll_Lore"	"<font color=\"#b0c3d9\">种族技能：巫毒狂暴</font>\n需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。\n\n（2）巨魔：所有友军的攻击速度+20。\n（4）巨魔：所有友军的攻击速度+20。\n（6）巨魔：所有友军获得效果：每次攻击命中都会使攻击速度增加20，最多可叠加20次。"
 		"DOTA_Tooltip_modifier_show_combo_is_dwarf_Description"	"需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。<br>（2）矮人：所有远程友军获得效果：攻击距离+300，优先攻击攻击距离内的生命值较少的敌人。远程攻击会对敌人造成每1格距离+10%%的额外伤害。"
 		"DOTA_Tooltip_ability_is_dwarf_Lore"	"<font color=\"#b0c3d9\">种族技能：硬化氪金狗眼</font>\n需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。\n\n（2）矮人：所有远程友军获得效果：攻击距离+300，优先攻击攻击距离内的生命值较少的敌人。远程攻击会对敌人造成每1格距离+10%的额外伤害。"
 		"DOTA_Tooltip_ability_item_shuijingjian_Description"	"攻击速度+20，攻击力+10。\n攻击有20%概率造成1.5倍暴击。"
@@ -3280,7 +3276,6 @@
 		"DOTA_Tooltip_ability_is_ward_Note0"	"稻草人图腾的生命值=棋盘上敌方棋子数量×3。"
 		"DOTA_Tooltip_ability_is_ward_Note1"	"啄木鸟图腾或蛮牛角图腾的生命值=棋盘上敌方棋子数量×1。"
 		"DOTA_Tooltip_ability_item_streak_plus_Description"	"你因为连胜/连败获得的金币奖励×2，在>=5回合的连胜或连败被终结时额外获得（连胜或连败回合数）的金币。"
-		
 		"DOTA_Tooltip_ability_disarm_chess_Note0"	"从第10回合开始，每次战利品回合或圣物回合结束后会刷新一次卸下装备的可使用次数。"
 		"DOTA_Tooltip_ability_item_shrink_meister_Lore"	"来自：圣物宝箱"
 		"q042_title"	"圣物：狱卒的钥匙"
@@ -3474,7 +3469,6 @@
 		"DOTA_Tooltip_ability_is_knight_Description"	"骑士的天职：匡扶弱小，伸张正义，消灭来自世界最黑暗角落的邪恶力量。这些神圣的战士们身着板甲，以对抗最强大的敌人。<br><br><img src='file://{images}/custom_game/chess_icon/chess_luna.png'><img src='file://{images}/custom_game/chess_icon/chess_bat.png'><img src='file://{images}/custom_game/chess_icon/chess_ck.png'><img src='file://{images}/custom_game/chess_icon/chess_abaddon.png'><img src='file://{images}/custom_game/chess_icon/chess_lc.png'><img src='file://{images}/custom_game/chess_icon/chess_snap.png'>"
 		"DOTA_Tooltip_ability_is_goblin_Description"	"地精们起初是科科岛上丛林巨魔的奴隶，而卡加矿石使得地精种族变得令人吃惊的狡猾和聪明。<br><br><img src='file://{images}/custom_game/chess_icon/chess_clock.png'><img src='file://{images}/custom_game/chess_icon/chess_tk.png'><img src='file://{images}/custom_game/chess_icon/chess_shredder.png'><img src='file://{images}/custom_game/chess_icon/chess_ga.png'><img src='file://{images}/custom_game/chess_icon/chess_snap.png'><img src='file://{images}/custom_game/chess_icon/chess_tech.png'>"
 		"DOTA_Tooltip_ability_is_demonhunter_Description"	"伊利达雷自愿接受了邪能和混乱魔法，正是这样的能量长期威胁着多多岛，但他们相信这是抗击敌人所必需的。<br><br><img src='file://{images}/custom_game/chess_icon/chess_am.png'><img src='file://{images}/custom_game/chess_icon/chess_tb.png'>"
-		
 		"DOTA_Tooltip_modifier_show_combo_is_elf_Description"	"需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。<br>（3）精灵：所有友方精灵有30%%几率闪避敌人的攻击。<br>（6）精灵：所有友军有35%%几率闪避敌人的攻击。<br>（9）精灵：所有友军获得效果：任何闪避都会产生一个幻象迷惑敌人。"
 		"DOTA_Tooltip_ability_is_elf_Lore"	"<font color=\"#b0c3d9\">种族技能：隐蔽</font>\n需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。\n\n（3）精灵：所有友方精灵有30%几率闪避敌人的攻击。\n（6）精灵：所有友军有35%几率闪避敌人的攻击。\n（9）精灵：所有友军获得效果：任何闪避都会产生一个幻象迷惑敌人。"
 		"DOTA_Tooltip_ability_is_assassin_Lore"	"<font color=\"#b0c3d9\">职业技能：致命一击</font>\n需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。\n\n（3）刺客：所有友方刺客的攻击有20%概率造成3倍伤害。\n（6）刺客：所有友军的攻击有25%概率造成4倍伤害。\n（9）刺客：所有友军获得效果：在击杀敌人时获得一次背刺跳跃。\n\n<font color=\"ff0000\">背刺跳跃</font>：刺客棋子每回合的第一次走动会直接跳跃到敌方阵型后方。刺客棋子在背刺跳跃后的第一次攻击必造成随机可能倍数的暴击伤害。"
@@ -3628,7 +3622,6 @@
 		"DOTA_Tooltip_ability_is_knight_Lore"	"<font color=\"#b0c3d9\">职业技能：王者祝福</font>\n需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。\n\n（2）骑士：所有友方骑士每3秒有30%概率获得一层减伤护盾和100点治疗。\n（4）骑士：所有友方骑士每3秒有25%概率获得一层减伤护盾和150点治疗。\n（6）骑士：所有友军每3秒有15%概率获得一层减伤护盾和250点治疗。\n所有骑士棋子都会在开始战斗时必获得一次减伤护盾。"
 		"DOTA_Tooltip_modifier_show_combo_is_knight_Description"	"需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。<br>（2）骑士：所有友方骑士每3秒有30%%概率获得一层减伤护盾和100点治疗。<br>（4）骑士：所有友方骑士每3秒有25%%概率获得一层减伤护盾和150点治疗。<br>（6）骑士：所有友军每3秒有15%%概率获得一层减伤护盾和250点治疗。<br>所有骑士棋子都会在开始战斗时必获得一次减伤护盾。"
 		"DOTA_Tooltip_ability_item_friends_discount_Description"	"你招募已拥有棋子的价格减半（向上取整）。"
-		
 		"DOTA_Tooltip_ability_item_silingshu_Description"	"普通攻击吸血+20%%，战斗开始的时候获得40点法力值。\n<h1>棋子主动技：立即激活</h1>召唤1个死灵战士和1个死灵射手为你战斗，它们的生命值、持续时间和技能等级随携带者的棋子等级提高而提高。<br>冷却时间：<span class=\"GameplayValues GameplayVariable\">30</span>秒"
 		"DOTA_Tooltip_ability_item_minglingshu_Description"	"最大生命值+250，普通攻击吸血+20%%，使被攻击的敌人护甲-3，战斗开始的时候获得40点法力值。\n使你的召唤物获得效果：最大生命值+25%%，攻击力+25%%，持续时间+50%%，并且召唤数量+1。\n<h1>棋子主动技：立即激活</h1>召唤1个死灵战士和1个死灵射手为你战斗，它们的生命值、持续时间、技能等级随携带者的棋子等级提高而提高。<br>冷却时间：<span class=\"GameplayValues GameplayVariable\">30</span>秒"
 		"DOTA_Tooltip_ability_item_huanyingfu_Description"	"最大生命值+250，造成伤害时获得的法力值+100%%。攻击力+10，攻击速度+10，闪避+15%%。\n<h1>棋子主动技：立即激活</h1>创造两个自身的幻象棋子，持续10秒。<br>冷却时间：<span class=\"GameplayValues GameplayVariable\">15</span>秒"
@@ -3642,17 +3635,14 @@
 		"h472"	"乔克小子♦黑色"
 		"h377"	"比林斯利·洛夫特莱特"
 		"DOTA_Tooltip_ability_is_kobold_Note1"	"如果相同的狗头人棋子数量>=3个，将不会触发复制效果。"
-
-		"round_cloud_line6"		""
-		"round_relic"			"圣物回合"
-		"round_relic_line6"		"● 击败每只：概率掉落战利品"
-		"round_relic_line7"		"● 击败所有：掉落圣物宝箱"
-
+		"round_relic"	"圣物回合"
+		"round_relic_line6"	"● 击败每只：概率掉落战利品"
+		"round_relic_line7"	"● 击败所有：掉落圣物宝箱"
 		"DOTA_Tooltip_ability_br_web_Description"	"<h1>棋子主动技：满能量时激活</h1>编织出一张蜘蛛网，在蜘蛛网中的敌方棋子无法移动，无法闪避，攻击有概率丢失，如果死亡还会孵化一只小蜘蛛。育母蜘蛛和小蜘蛛攻击蜘蛛网内的敌人会附带<font color=\"#5cb85c\">吸血</font>效果。"
-
 		"DOTA_Tooltip_ability_br_web_lifesteal_per"	"吸血百分比%"
-
 		"DOTA_Tooltip_ability_item_second_chance_Description"	"你的信使使用非宝箱类消耗性物品时有40%的概率不消耗该物品。"
 		"DOTA_Tooltip_ability_item_shrink_meister_Description"	"你的招募棋子有75%概率仅花费1金币，并使用-2等级信使的招募概率。"
+		"b203"	"琪琪海"
+		"DOTA_Tooltip_ability_item_more_creep"	"<font color=\"#ade55c\">百兽大游行</font>"
 	}
 }

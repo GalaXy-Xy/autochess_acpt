@@ -5675,6 +5675,38 @@
 		"ItemIsNeutralDrop"	"1"
 	}
 
+	"item_more_creep"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_neutral"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"ID"	"1621"
+		"ItemCastOnPickup"	"0"
+		"ItemDroppable"	"0"
+		"ItemSellable"	"0"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemPurchasable"	"0"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"1"
+		"ItemPermanent"	"1"
+		"ItemRequiresCharges"	"0"
+		"ItemInitialCharges"	"0"
+		"ItemStackable"	"0"
+		"ItemRequirements"	{}
+		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"Modifiers"
+		{
+			"modifier_item_more_creep"
+			{
+				"IsHidden"	"1"
+				"Passive"	"1"
+			}
+		}
+		"ItemIsNeutralDrop"	"1"
+	}
+
 	"item_recipe_hudie"
 	{
 		"BaseClass"	"item_recipe_arcane_boots"
@@ -6522,6 +6554,32 @@
 		"ItemRequirements"
 		{
 			"01"	"item_xixuemianju;item_xixuemianju;item_nengliangqiu;"
+		}
+	}
+
+	"item_recipe_minglingshu_2"
+	{
+		"BaseClass"	"item_recipe_arcane_boots"
+		"ID"	"3073"
+		"ItemCost"	"0"
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_minglingshu"
+		"ItemRequirements"
+		{
+			"01"	"item_silingshu_2;item_zhaohuanshenshi;"
+		}
+	}
+
+	"item_recipe_minglingshu_3"
+	{
+		"BaseClass"	"item_recipe_arcane_boots"
+		"ID"	"3074"
+		"ItemCost"	"0"
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_minglingshu"
+		"ItemRequirements"
+		{
+			"01"	"item_silingshu_3;item_zhaohuanshenshi;"
 		}
 	}
 	// --------------------------------------------------------------------

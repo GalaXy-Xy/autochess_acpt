@@ -3978,7 +3978,6 @@
 		"DOTA_Tooltip_ability_is_knight_Lore"	"<font color=\"#b0c3d9\">직업 특성: 신성 보호</font>\n아군 필드에 서로 다른 기사 체스말 (N)개가 존재할 때 발동합니다.\n\n(2) 기사: 모든 아군 기사들이 3초 마다 30% 확률로 강력한 보호막을 시전하고 체력을 100 회복합니다.\n(4) 기사: 모든 아군 기사들이 3초 마다 25% 확률로 강력한 보호막을 시전하고 체력을 150 회복합니다.\n(6) 기사: 모든 아군 유닛들이 3초 마다 15% 확률로 강력한 보호막을 시전하고 체력을 250 회복합니다.\n모든 아군 기사는 전투시작시 강력한 보호막을 시전합니다."
 		"DOTA_Tooltip_modifier_show_combo_is_knight_Description"	"아군 필드에 서로 다른 기사 체스말 (N)개가 존재할 때 발동합니다.<br>(2) 기사: 모든 아군 기사들이 3초 마다 30%% 확률로 강력한 보호막을 시전하고 체력을 100 회복합니다.<br>(4) 기사: 모든 아군 기사들이 3초 마다 25%% 확률로 강력한 보호막을 시전하고 체력을 150 회복합니다.<br>(6) 기사: 모든 아군 유닛들이 3초 마다 15%% 확률로 강력한 보호막을 시전하고 체력을 250 회복합니다.<br>모든 아군 기사는 전투시작시 강력한 보호막을 시전합니다."
 		"DOTA_Tooltip_ability_item_friends_discount_Description"	"이미 보유중인 유닛의 구매가격이 반감됩니다.(정수 반올림)"
-
 		"DOTA_Tooltip_ability_item_silingshu_Description"	"+20%% 기본 공격 생명력 흡수, 전투 시작 시 40 마나 획득.\n<h1>자동 시전</h1>네크로노미콘 전사와 궁수를 하나씩 소환합니다.소환 유닛의 체력,지속 시간,기본 스킬레벨은 아이템 착용유닛의 레벨에 따라 상승됩니다.<br>재사용 대기시간: <span class=\"GameplayValues GameplayVariable\">30</span>초"
 		"DOTA_Tooltip_ability_item_huanyingfu_Description"	"+250 최대 체력, +100% 공격시 마나 재생, +10 공격력, +10 공격 속도, +15% 회피.\n<h1>자동 시전: </h1>10초 동안 유지되는 자신의 환영 2개를 불러냅니다.<br>재사용 대기시간: <span class=\"GameplayValues GameplayVariable\">15</span>초"
 		"h415"	"짹짹이"
@@ -3989,15 +3988,12 @@
 		"h472"	"조커.Jr♦Black"
 		"h377"	"빌링슬리 로프트라이트"
 		"DOTA_Tooltip_ability_is_kobold_Note1"	"동일한 코볼트유닛수가 3기 이상일 시 복제효과를 받을 수 없습니다."
-
 		"DOTA_Tooltip_ability_item_silingshu_2"	"<font color=\"#4b69ff\">네크로노미콘</font>"
 		"DOTA_Tooltip_ability_item_silingshu_3"	"<font color=\"#4b69ff\">네크로노미콘</font>"
 		"DOTA_Tooltip_ability_item_silingshu_2_Description"	"+20%% 기본 공격 생명력 흡수, 전투 시작 시 40 마나 획득.\n<h1>자동 시전</h1>네크로노미콘 전사와 궁수를 하나씩 소환합니다.소환 유닛의 체력,지속 시간,기본 스킬레벨은 아이템 착용유닛의 레벨에 따라 상승됩니다.<br>재사용 대기시간: <span class=\"GameplayValues GameplayVariable\">30</span>초"
 		"DOTA_Tooltip_ability_item_silingshu_3_Description"	"+20%% 기본 공격 생명력 흡수, 전투 시작 시 40 마나 획득.\n<h1>자동 시전</h1>네크로노미콘 전사와 궁수를 하나씩 소환합니다.소환 유닛의 체력,지속 시간,기본 스킬레벨은 아이템 착용유닛의 레벨에 따라 상승됩니다.<br>재사용 대기시간: <span class=\"GameplayValues GameplayVariable\">30</span>초"
-
-		"round_cloud_line6"		""
-		"round_relic"			"성물 라운드"
-		"round_relic_line6"		"● 크립 처치시: 일정 확률로 아이템 획득"
-		"round_relic_line7"		"● 전부 클리어시: 성물 상자 획득"
+		"round_relic"	"성물 라운드"
+		"round_relic_line6"	"● 크립 처치시: 일정 확률로 아이템 획득"
+		"round_relic_line7"	"● 전부 클리어시: 성물 상자 획득"
 	}
 }

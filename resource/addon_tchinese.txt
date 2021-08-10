@@ -3598,14 +3598,10 @@
 		"h472"	"喬克小子♦黑色"
 		"h377"	"比林斯利·洛夫特萊特"
 		"DOTA_Tooltip_ability_is_kobold_Note1"	"如果相同的狗頭人棋子數量>=3個，將不會觸發復製效果。"
-
-		"round_cloud_line6"		""
-		"round_relic"			"聖物回合"
-		"round_relic_line6"		"● 擊敗每只：概率掉落戰利品"
-		"round_relic_line7"		"● 擊敗所有：掉落聖物寶箱"
-
+		"round_relic"	"聖物回合"
+		"round_relic_line6"	"● 擊敗每只：概率掉落戰利品"
+		"round_relic_line7"	"● 擊敗所有：掉落聖物寶箱"
 		"DOTA_Tooltip_ability_br_web_Description"	"<h1>棋子主動技：滿能量時激活</h1>編織出一張蜘蛛網，在蜘蛛網中的敵方棋子無法移動，無法閃避，攻擊有概率丟失，如果死亡還會孵化一只小蜘蛛。育母蜘蛛和小蜘蛛攻擊蜘蛛網內的敵人會附帶<font color=\"#5cb85c\">吸血</font>效果。"
-
 		"DOTA_Tooltip_ability_br_web_lifesteal_per"	"吸血百分比%"
 	}
 }
