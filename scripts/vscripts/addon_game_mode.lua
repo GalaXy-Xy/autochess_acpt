@@ -891,7 +891,8 @@ function DAC:InitGameMode()
 		[13] = "item_vampiric_embrace",
 		[14] = "item_second_chance",
 		[15] = "item_mangotree",
-		[16] = "item_black_gear",
+		[16] = "item_more_creep",
+		[17] = "item_black_gear",
 	}
 
 	GameRules:GetGameModeEntity():SetPauseEnabled(false)
@@ -3389,15 +3390,15 @@ function MakeGreevil(unit,is_flying)
 end
 function RandomRelic()
 	local remove_table = {}
-	local ll = table.maxn(GameRules:GetGameModeEntity().DROP_RELIC_LIST)
+	-- local ll = table.maxn(GameRules:GetGameModeEntity().DROP_RELIC_LIST)
 
-	while ll > 10 do
-		local rn = RandomInt(1,ll)
-		local chess = GameRules:GetGameModeEntity().DROP_RELIC_LIST[rn]
-		table.insert(remove_table,chess)
-		table.remove(GameRules:GetGameModeEntity().DROP_RELIC_LIST,rn)
-		ll = table.maxn(GameRules:GetGameModeEntity().DROP_RELIC_LIST)
-	end
+	-- while ll > 10 do
+	-- 	local rn = RandomInt(1,ll)
+	-- 	local chess = GameRules:GetGameModeEntity().DROP_RELIC_LIST[rn]
+	-- 	table.insert(remove_table,chess)
+	-- 	table.remove(GameRules:GetGameModeEntity().DROP_RELIC_LIST,rn)
+	-- 	ll = table.maxn(GameRules:GetGameModeEntity().DROP_RELIC_LIST)
+	-- end
 	return remove_table
 end
 function RandomLegendary()
