@@ -10295,6 +10295,54 @@
 		}
 	}
 
+	"roshan_attack"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"harpy_storm_chain_lightning"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_roshan_attack"
+			{
+				"Passive"	"1"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"RunScript"
+							{
+								"Target"	"CASTER"
+								"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
+								"Function"	"RandomSunStrike"
+							}
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_roshan_attack_animation"
+								"Duration"	"1.5"
+							}
+						}
+						"Chance"	"25"
+					}
+				}
+				"IsHidden"	"1"
+				"Properties"	{}
+			}
+			"modifier_roshan_attack_animation"
+			{
+				"IsHidden"	"1"
+				"OverrideAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
 	"baby_dragon"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -10981,6 +11029,7 @@
 		"precache"
 		{
 			"particle"	"particles/econ/items/viper/viper_ti7_immortal/viper_poison_crimson_debuff_ti7_puddle_bubble.vpcf"
+			"particle"	"effect/evolve_status.vpcf"
 		}
 		"Modifiers"
 		{
@@ -12034,7 +12083,7 @@
 				"var_type"	"FIELD_INTEGER"
 				"miss_per"	"40 60 100"
 			}
-			"03"
+			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"lifesteal_per"	"25"
@@ -16996,6 +17045,7 @@
 			}
 		}
 	}
+
 	"evolve"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -17063,6 +17113,7 @@
 			}
 		}
 	}
+
 	"evolve_immediate"
 	{
 		"BaseClass"	"ability_datadriven"

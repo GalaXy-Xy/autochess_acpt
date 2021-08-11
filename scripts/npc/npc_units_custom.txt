@@ -23834,7 +23834,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"600"
+		"StatusHealth"	"650"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"5"
 		// Base mana.
@@ -23955,7 +23955,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"1200"
+		"StatusHealth"	"1300"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"10"
 		// Base mana.
@@ -24079,7 +24079,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"1800"
+		"StatusHealth"	"1950"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"20"
 		// Base mana.
@@ -27951,7 +27951,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"900"
+		"StatusHealth"	"950"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -27982,7 +27982,7 @@
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"90"
-		"AttackDamageMax"	"130"
+		"AttackDamageMax"	"150"
 		"AttackRate"	"1.1"
 		"AttackRange"	"400"
 		"Creature"
@@ -28077,7 +28077,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"1800"
+		"StatusHealth"	"1900"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -28108,7 +28108,7 @@
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"180"
-		"AttackDamageMax"	"260"
+		"AttackDamageMax"	"300"
 		"AttackRate"	"1.1"
 		"AttackRange"	"400"
 		"Creature"
@@ -28203,7 +28203,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"2700"
+		"StatusHealth"	"2850"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -28234,7 +28234,7 @@
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"360"
-		"AttackDamageMax"	"520"
+		"AttackDamageMax"	"600"
 		"AttackRate"	"1.1"
 		"AttackRange"	"400"
 		"Creature"
@@ -36749,7 +36749,7 @@
 		"VisionDaytimeRange"	"384"
 		"VisionNighttimeRange"	"384"
 		"AttackDamageMin"	"50"
-		"AttackDamageMax"	"100"
+		"AttackDamageMax"	"150"
 		"AttackRate"	"1.2"
 		"AttackRange"	"205"
 		"AttackRangeBuffer"	"50"
@@ -36790,7 +36790,7 @@
 		"Ability16"	"dac_guai_base"
 		"Model"	"models/creeps/neutral_creeps/n_creep_worg_small/n_creep_worg_small.vmdl"
 		"ModelScale"	"0.9"
-		"Level"	"3"
+		"Level"	"2"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
@@ -38392,7 +38392,7 @@
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"StatusHealth"	"5000"
+		"StatusHealth"	"4500"
 		"StatusHealthRegen"	"0"
 		"StatusMana"	"0"
 		"StatusManaRegen"	"0"
@@ -38444,7 +38444,7 @@
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"StatusHealth"	"5000"
+		"StatusHealth"	"4500"
 		"StatusHealthRegen"	"0"
 		"StatusMana"	"0"
 		"StatusManaRegen"	"0"
@@ -38793,7 +38793,7 @@
 		"Ability2"	"tidehunter_kraken_shell"
 		"Ability3"	"is_beast"
 		"Ability4"	"attack_pure"
-		"Ability5"	""
+		"Ability5"	"roshan_bash"
 		"Ability6"	""
 		"Ability7"	""
 		"Ability8"	""
@@ -38818,7 +38818,7 @@
 		"StatusStartingMana"	"0"
 		"VisionDaytimeRange"	"384"
 		"VisionNighttimeRange"	"384"
-		"AttackDamageMin"	"300"
+		"AttackDamageMin"	"1000"
 		"AttackDamageMax"	"1500"
 		"AttackRate"	"0.6"
 		"AttackRange"	"400"
@@ -39031,8 +39031,8 @@
 		"Ability1"	"sven_great_cleave"
 		"Ability2"	"tidehunter_kraken_shell"
 		"Ability3"	"is_demon"
-		"Ability4"	""
-		"Ability5"	""
+		"Ability4"	"roshan_attack"
+		"Ability5"	"roshan_bash"
 		"Ability6"	""
 		"Ability7"	""
 		"Ability8"	""
@@ -39069,9 +39069,9 @@
 		"HealthBarOffset"	"428"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"SoundSet"	"Roshan"
-		"ProjectileModel"	"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave.vpcf"
+		"ProjectileModel"	"particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf"
 		"ProjectileSpeed"	"1000"
-		"AttackAnimationPoint"	"0.3"
+		"AttackAnimationPoint"	"0.6"
 		"UnitRelationShipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"AutoAttacksByDefault"	"1"
 		"Skin"	"0"

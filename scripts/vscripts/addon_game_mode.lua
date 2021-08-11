@@ -2899,8 +2899,8 @@ function DAC:InitGameMode()
 
 		h274 = 1.15,
 		h275 = 1.15,
-		h376 = 1.25,
-		h472 = 1.35,
+		h376 = 1.22,
+		h472 = 1.3,
 
 		h377 = 1.0,
 	}
@@ -3390,47 +3390,10 @@ function MakeGreevil(unit,is_flying)
 end
 function RandomRelic()
 	local remove_table = {}
-	-- local ll = table.maxn(GameRules:GetGameModeEntity().DROP_RELIC_LIST)
-
-	-- while ll > 10 do
-	-- 	local rn = RandomInt(1,ll)
-	-- 	local chess = GameRules:GetGameModeEntity().DROP_RELIC_LIST[rn]
-	-- 	table.insert(remove_table,chess)
-	-- 	table.remove(GameRules:GetGameModeEntity().DROP_RELIC_LIST,rn)
-	-- 	ll = table.maxn(GameRules:GetGameModeEntity().DROP_RELIC_LIST)
-	-- end
 	return remove_table
 end
 function RandomLegendary()
 	local remove_table = {}
-	local ll = table.maxn(GameRules:GetGameModeEntity().chess_list_by_mana[5])
-
-	while ll > 8 do
-		local rn = RandomInt(1,ll)
-		local chess = GameRules:GetGameModeEntity().chess_list_by_mana[5][rn]
-		table.insert(remove_table,chess)
-		table.remove(GameRules:GetGameModeEntity().chess_list_by_mana[5],rn)
-		-- table.insert(GameRules:GetGameModeEntity().chess_list_by_mana_black[5],chess)
-		for i,v in pairs(GameRules:GetGameModeEntity().chess_list_by_synergy) do
-			if FindValueInTable(v,chess) == true then
-				RemoveTableItem(v,chess)
-			end
-		end
-		ll = table.maxn(GameRules:GetGameModeEntity().chess_list_by_mana[5])
-	end
-	-- while ll > 7 do
-	-- 	local rn = RandomInt(1,ll)
-	-- 	local chess = GameRules:GetGameModeEntity().chess_list_by_mana[5][rn]
-	-- 	table.insert(remove_table,chess)
-	-- 	table.remove(GameRules:GetGameModeEntity().chess_list_by_mana[5],rn)
-	-- 	for i,v in pairs(GameRules:GetGameModeEntity().chess_list_by_synergy) do
-	-- 		if FindValueInTable(v,chess) == true then
-	-- 			RemoveTableItem(v,chess)
-	-- 		end
-	-- 	end
-	-- 	ll = table.maxn(GameRules:GetGameModeEntity().chess_list_by_mana[5])
-	-- end
-	-- table.insert(GameRules:GetGameModeEntity().chess_list_by_mana[5],'chess_et')
 	return remove_table
 end
 
@@ -8968,7 +8931,7 @@ function LoseARound(team,enemychess_new)
 					damage_all = 1
 				end
 				--第二次机会
-				if hero:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 40 then
+				if hero:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 35 then
 					PlayItemMultiCastParticle(hero)
 				else
 					fengwangjiang:SpendCharge()
@@ -8982,7 +8945,7 @@ function LoseARound(team,enemychess_new)
 			if pingguo ~= nil then
 				damage_all = hero:GetHealth() - 1
 				--第二次机会
-				if hero:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 40 then
+				if hero:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 35 then
 					PlayItemMultiCastParticle(hero)
 				else
 					pingguo:SpendCharge()
@@ -9056,6 +9019,7 @@ function LoseARound(team,enemychess_new)
 			player = TeamId2Hero(team):GetPlayerID(),
 			num = enemychess_new,
 			text = TeamId2Hero(team).cloud_opp_name,
+			hp_damage = damage_all,
 		})
 	else
 		AddHistoryLose(team,GameRules:GetGameModeEntity().counterpart[team])
@@ -9064,6 +9028,7 @@ function LoseARound(team,enemychess_new)
 			player = TeamId2Hero(team):GetPlayerID(),
 			player2 = TeamId2Hero(GameRules:GetGameModeEntity().counterpart[team]):GetPlayerID(),
 			num = enemychess_new,
+			hp_damage = damage_all,
 		})
 
 		AddStat(TeamId2Hero(GameRules:GetGameModeEntity().counterpart[team]):GetPlayerID(),'hero_damage',damage_all)
@@ -10827,7 +10792,7 @@ function LoadOneCloudChess(vi,team)
 end
 
 function EvolveAChess(u)
-	if u.evolving == true or u.evolve_result == nil then
+	if u.evolving == true or (u.evolve_result == nil and u.evolve_result_6 == nil) then
 		return
 	end
 	u.is_evolving = true
@@ -10872,7 +10837,7 @@ function EvolveAChess(u)
 					end
 				end
 
-				local x = SummonAChess(team_id,aposition,u.evolve_result,at_team_id,100,0,{},false)
+				local x = SummonAChess(team_id,aposition,u.evolve_result or u.evolve_result_6,at_team_id,100,0,{},false)
 				if IsUnitExist(x) then
 					if shaman_6 then
 						AddAbilityAndSetLevel(x,'is_shaman_buff_plus_plus')
@@ -10881,7 +10846,7 @@ function EvolveAChess(u)
 					x:SetHealth(x:GetMaxHealth()*hp_per)
 					EmitSoundOn("shaman.evolve",x)
 					play_particle("particles/econ/events/ti10/hero_levelup_ti10.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
-					x:AddNewModifier(x,nil,"modifier_kill",{duration = 15})
+					x:AddNewModifier(x,nil,"modifier_kill",{duration = 20})
 				end
 			end
 		end
@@ -10948,10 +10913,14 @@ function ChessAI(u,force_delay)
 				local x = nil
 				if u.kobold_item == 1 then
 					x = SummonAChess(team_id,aposition,u:GetUnitName(),at_team_id,100,0,items,false)
-					x:AddNewModifier(x,nil,"modifier_kill",{duration = 30})
+					if string.find(u:GetUnitName(),'pve_') == nil then
+						x:AddNewModifier(x,nil,"modifier_kill",{duration = 30})
+					end
 				else
 					x = SummonAChess(team_id,aposition,u:GetUnitName(),at_team_id,100,0,{},false)
-					x:AddNewModifier(x,nil,"modifier_kill",{duration = 15})
+					if string.find(u:GetUnitName(),'pve_') == nil then
+						x:AddNewModifier(x,nil,"modifier_kill",{duration = 15})
+					end
 				end
 				BlinkChessX({caster=x,blink_type="breaksoil"})
 				u.kobold_result = nil
@@ -11311,6 +11280,7 @@ function ChessAI(u,force_delay)
 					level = u:FindAbilityByName('smoke_screen_trigger'):GetLevel(),
 					caster_position = CentrosymmetryPosition(u.at_team_id or u.team_id,u.x,u.y),
 					position = CentrosymmetryPosition(u.at_team_id or u.team_id,u.x,u.y),
+					ignore_nether_ward = true,
 				})
 			end)
 		end
@@ -11351,7 +11321,7 @@ function ChessAI(u,force_delay)
 
 			--进化
 			if u.evolve_result ~= nil then
-				if u:HasModifier("modifier_kill") and u:HasModifier('modifier_is_shaman_buff_plus_plus') == false then
+				if u:HasModifier("modifier_kill") then
 					--有持续时间的棋子不进化
 					u.evolve_result = nil
 				else
@@ -11360,6 +11330,13 @@ function ChessAI(u,force_delay)
 					if evolveresult then
 						return evolveresult
 					end
+				end
+			end
+			if u.evolve_result_6 ~= nil then
+				--开始进化！
+				local evolveresult = EvolveThink(u)
+				if evolveresult then
+					return evolveresult
 				end
 			end
 
@@ -18603,6 +18580,10 @@ function ShowCombat(keys)
 		end
 	end
 
+	if combat_type == 'battle_pvp_lose' or combat_type == 'battle_cloud_lose' then
+		combat_num = keys.hp_damage or 0
+	end
+
 	if combat_player ~= nil then
 		gameEvent["player_id"] = combat_player
 	end
@@ -20324,7 +20305,7 @@ function ItemChishu(keys)
 		target:CutDown(caster:GetTeam())
 	end
 	--第二次机会
-	if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 40 then
+	if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 35 then
 		caster:AddItemByName('item_chishu')
 		PlayItemMultiCastParticle(caster)
 	end
@@ -20376,7 +20357,7 @@ function ItemMangguo(keys)
 	local caster = keys.caster
 	local add_mana = RandomInt(1,caster:GetLevel())
 	--第二次机会
-	if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 40 then
+	if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 35 then
 		caster:AddItemByName('item_mangguo')
 		PlayItemMultiCastParticle(caster)
 	end
@@ -20401,7 +20382,7 @@ function ItemZhishizhishu(keys)
 	local is_gold = keys.is_gold
 	local lv = caster:GetLevel()
 	--第二次机会
-	if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 40 then
+	if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 35 then
 		caster:AddItemByName('item_zhishizhishu')
 		PlayItemMultiCastParticle(caster)
 	end
@@ -20436,21 +20417,21 @@ function ItemJixiezhixin(keys)
 	if is_gold ~= nil then
 		Draw5ChessAndShow(team_id, true, 1)
 		--第二次机会
-		if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 40 then
+		if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 35 then
 			caster:AddItemByName('item_jixiezhixin_gold')
 			PlayItemMultiCastParticle(caster)
 		end
 	elseif is_black ~= nil then
 		Draw5ChessAndShow(team_id, true, 2)
 		--第二次机会
-		if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 40 then
+		if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 35 then
 			caster:AddItemByName('item_jixiezhixin_black')
 			PlayItemMultiCastParticle(caster)
 		end
 	else
 		Draw5ChessAndShow(team_id, true, 0)
 		--第二次机会
-		if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 40 then
+		if caster:HasModifier('modifier_item_second_chance') and RandomInt(1,100) < 35 then
 			caster:AddItemByName('item_jixiezhixin')
 			PlayItemMultiCastParticle(caster)
 		end
@@ -23157,7 +23138,8 @@ function OnChessCastStart(u)
 		u.is_multi_cast_enable = true
 	end
 	if u:HasModifier('modifier_is_shaman_buff_plus_plus') == true then
-		u.evolve_result = RandomEvolveChess(u,1)
+		--6萨满施法进化
+		u.evolve_result_6 = RandomEvolveChess(u,2)
 		AddAbilityAndSetLevel(u,'evolve_immediate')
 	end
 end
@@ -27786,6 +27768,46 @@ end
 function EvolveFailed(keys)
 	local caster = keys.caster
 	caster:Stop()
+end
+
+function RandomSunStrike(keys)
+	local caster = keys.caster
+	Timers:CreateTimer(RandomFloat(0,0.5),function()
+		local unluckydog = FindUnluckyDog(caster)
+		if unluckydog ~= nil then
+			InvisibleUnitCast({
+				caster = caster,
+				ability = 'invoker_sun_strike',
+				level = 3,
+				position = unluckydog:GetAbsOrigin(),
+				ignore_nether_ward = true,
+			})
+		end
+	end)
+	Timers:CreateTimer(RandomFloat(0,0.5),function()
+		local unluckydog = FindUnluckyDog(caster)
+		if unluckydog ~= nil then
+			InvisibleUnitCast({
+				caster = caster,
+				ability = 'invoker_sun_strike',
+				level = 3,
+				position = unluckydog:GetAbsOrigin(),
+				ignore_nether_ward = true,
+			})
+		end
+	end)
+	Timers:CreateTimer(RandomFloat(0,0.5),function()
+		local unluckydog = FindUnluckyDog(caster)
+		if unluckydog ~= nil then
+			InvisibleUnitCast({
+				caster = caster,
+				ability = 'invoker_sun_strike',
+				level = 3,
+				position = unluckydog:GetAbsOrigin(),
+				ignore_nether_ward = true,
+			})
+		end
+	end)
 end
 ----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
