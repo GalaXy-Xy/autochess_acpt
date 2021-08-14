@@ -1618,10 +1618,10 @@
 		"DOTA_Tooltip_ability_oracle_mingyunsheling"	"命运敕令"
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_jingu_count"	"禁锢棋子数量"
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_jingu_duration"	"禁锢时间"
-		"DOTA_Tooltip_ability_oracle_mingyunsheling_Description"	"<h1>棋子主动技：满能量时激活</h1>神谕者暂时禁锢敌方棋子，使其无法物理攻击、魔法抗性降低，但获得100%的物理伤害减免。"
+		
+
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_Lore"	"无法逾越的预言四处回响：神选之子将暂时不受凡世的折磨。"
 		"DOTA_Tooltip_modifier_oracle_mingyunsheling"	"命运敕令"
-		"DOTA_Tooltip_modifier_oracle_mingyunsheling_Description"	"无法物理攻击并获得100%的物理伤害减免。"
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_Note0"	"命运敕令会倾向于禁锢剩余生命值百分比较高的敌方棋子。"
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_Note1"	"命运敕令会倾向于不将敌方棋子全部禁锢。"
 		"chess_na"	"司夜刺客★"
@@ -3644,5 +3644,10 @@
 		"DOTA_Tooltip_ability_item_shrink_meister_Description"	"你的招募棋子有75%概率仅花费1金币，并使用-2等级信使的招募概率。"
 		"b203"	"琪琪海"
 		"DOTA_Tooltip_ability_item_more_creep"	"<font color=\"#ade55c\">百兽大游行</font>"
+		"item_more_creep"						"百兽大游行"
+
+		"DOTA_Tooltip_ability_oracle_mingyunsheling_Description"	"<h1>棋子主动技：满能量时激活</h1>神谕者暂时禁锢敌方棋子，使其无法物理攻击、魔法抗性降低，但免疫<font color=\"#a02d27\">物理伤害</font>。"
+		"DOTA_Tooltip_modifier_oracle_mingyunsheling_Description"	"无法物理攻击、魔法抗性降低，但免疫<font color=\"#a02d27\">物理伤害</font>。"
+		"round_cloud_line6"		" "
 	}
 }

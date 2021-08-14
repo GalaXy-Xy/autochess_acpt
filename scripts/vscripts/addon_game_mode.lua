@@ -9806,7 +9806,7 @@ function AddComboAbility(teamid)
 							if cc.team_id == teamid and cc:HasAbility('is_shaman') then
 								if IsUnitExist(cc) == true then
 									AddAbilityAndSetLevel(cc,'no_selectable')
-									cc.evolve_result = RandomEvolveChess(cc,1)
+									cc.evolve_result = RandomEvolveChess(cc,2)
 								end
 							end
 						end
@@ -10195,7 +10195,7 @@ function AddComboAbility(teamid)
 							if cc.team_id == 4 and cc:HasAbility('is_shaman') then
 								if IsUnitExist(cc) == true then
 									AddAbilityAndSetLevel(cc,'no_selectable')
-									cc.evolve_result = RandomEvolveChess(cc,1)
+									cc.evolve_result = RandomEvolveChess(cc,2)
 								end
 							end
 						end
@@ -10477,7 +10477,7 @@ function AddABaojunAbility(baojun, ability)
 		end
 	elseif ability == 'is_shaman1' then
 		AddAbilityAndSetLevel(baojun,'no_selectable')
-		baojun.evolve_result = RandomEvolveChess(baojun,1)
+		baojun.evolve_result = RandomEvolveChess(baojun,2)
 	else
 		--非特例
 		if baojun:HasAbility(ability) == false then
@@ -10822,16 +10822,16 @@ function EvolveAChess(u)
 					})
 				end
 				if team_id ~= 4 then
+					u:SetModelScale(0.0001)
 					SaveItem(u.team_id,u:entindex(),function()
 						if IsUnitExist(u) then
-							u:SetModelScale(0.0001)
 							AddAbilityAndSetLevel(u,'no_hp_bar')
 							u:ForceKill(false)
 						end
 					end)
 				else
+					u:SetModelScale(0.0001)
 					if IsUnitExist(u) then
-						u:SetModelScale(0.0001)
 						AddAbilityAndSetLevel(u,'no_hp_bar')
 						u:ForceKill(false)
 					end
@@ -10846,7 +10846,7 @@ function EvolveAChess(u)
 					x:SetHealth(x:GetMaxHealth()*hp_per)
 					EmitSoundOn("shaman.evolve",x)
 					play_particle("particles/econ/events/ti10/hero_levelup_ti10.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
-					x:AddNewModifier(x,nil,"modifier_kill",{duration = 20})
+					x:AddNewModifier(x,nil,"modifier_kill",{duration = 15})
 				end
 			end
 		end

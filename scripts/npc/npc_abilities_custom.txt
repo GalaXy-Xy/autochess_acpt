@@ -276,7 +276,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"heal"	"250 400 550"
+				"heal"	"200 300 450"
 				"LinkedSpecialBonus"	"special_bonus_unique_omniknight_1"
 			}
 			"02"
@@ -9365,7 +9365,7 @@
 				"TextureName"	"oracle_fates_edict"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"-20 -30 -50"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magic_resist"
 				}
 				"States"
 				{
@@ -9397,6 +9397,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"jingu_count"	"1 2 3"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"magic_resist"	"-20 -30 -50"
 			}
 		}
 	}
@@ -14436,7 +14441,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"total_damage"	"300 400 600"
+				"total_damage"	"400 600 800"
 				"LinkedSpecialBonus"	"special_bonus_unique_shadow_shaman_6"
 			}
 			"03"
