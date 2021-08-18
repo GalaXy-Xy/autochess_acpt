@@ -1618,8 +1618,6 @@
 		"DOTA_Tooltip_ability_oracle_mingyunsheling"	"命运敕令"
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_jingu_count"	"禁锢棋子数量"
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_jingu_duration"	"禁锢时间"
-		
-
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_Lore"	"无法逾越的预言四处回响：神选之子将暂时不受凡世的折磨。"
 		"DOTA_Tooltip_modifier_oracle_mingyunsheling"	"命运敕令"
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_Note0"	"命运敕令会倾向于禁锢剩余生命值百分比较高的敌方棋子。"
@@ -2806,7 +2804,7 @@
 		"DOTA_Tooltip_modifier_ogre_25_attack_damage_Description"	"最大生命值+20%%，攻击力+20%%，最多可叠加10次。"
 		"DOTA_Tooltip_ability_item_yinyuezhijing_Description"	"攻击速度+120。"
 		"DOTA_Tooltip_ability_item_linkenfaqiu_Description"	"最大生命值+250，生命回复+15。\n造成伤害时获得的法力值+150%。\n抵挡指向性法术。<br>冷却时间：<span class=\"GameplayValues GameplayVariable\">5</span>秒"
-		"DOTA_Tooltip_ability_item_qiangxi_Description"	"护甲+10，攻击速度+30。\n光环：周围1格友军护甲+5，攻击速度+15。\n光环：周围1格敌军护甲-5，攻击速度-15。"
+		
 		"DOTA_Tooltip_ability_item_jinghunzhiren_Description"	"攻击速度+10，闪避+15%%，魔法伤害+10%%。\n攻击召唤物棋子、镜像棋子或变形的棋子会额外造成50点纯粹伤害。"
 		"DOTA_Tooltip_ability_item_yangdao_Description"	"魔法伤害+20%%，造成伤害时获得的法力值+200%%，生命值+250。\n主动技：可以使一个等级最高的敌方棋子变成可爱的小动物，持续8秒。"
 		"DOTA_Tooltip_ability_medusa_stone_gaze"	"石化凝视"
@@ -3428,8 +3426,6 @@
 		"DOTA_Tooltip_modifier_show_combo_is_satyr_Description"	"需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。<br>（1）萨特：所有友方萨特获得效果：在进入战斗前隐藏自己在棋盘上的位置。"
 		"DOTA_Tooltip_ability_is_satyr_banned_Description"	"你将不会再招募到此种族或职业的棋子，点击可以解除此屏蔽。"
 		"DOTA_Tooltip_ability_is_satyr_banned"	"已屏蔽：萨特"
-		"DOTA_Tooltip_ability_is_monk_Lore"	"<font color=\"#b0c3d9\">职业技能：醉拳</font>\n需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。\n\n（2）武僧：所有友方武僧获得效果：造成任意伤害后有概率立即消灭生命值低于40%的敌方棋子。生命值百分比越低，消灭的概率越高。"
-		"DOTA_Tooltip_modifier_show_combo_is_monk_Description"	"需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。<br>（2）武僧：所有友方武僧获得效果：造成任意伤害后有概率立即消灭生命值低于40%%的敌方棋子。生命值百分比越低，消灭的概率越高。"
 		"DOTA_Tooltip_ability_smoke_screen_trigger"	"烟幕弹"
 		"DOTA_Tooltip_ability_smoke_screen_trigger_Description"	"当隐形刺客从隐身状态中显形，立即在棋盘上自己位置的中心对称点施放一颗烟雾弹，烟雾弹中的敌方棋子会被<font color=\"#5cb85c\">沉默</font>并且<font color=\"#5cb85c\">致盲</font>（攻击有概率丢失）。"
 		"DOTA_Tooltip_ability_smoke_screen_trigger_Lore"	"自从他在背叛之夜逃脱后，力丸就发掘出这能迷惑对手的简单烟幕的价值。"
@@ -3619,8 +3615,6 @@
 		"DOTA_Tooltip_ability_is_kobold_Lore"	"<font color=\"#b0c3d9\">种族技能：分则能成</font>\n需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。\n\n（1）狗头人：当狗头人棋子升级为★★★的时候，会复制一只。如果场上的友方狗头人棋子两两相同，在战斗开始时为每组两两相同的友方棋子召唤一个复制。"
 		"DOTA_Tooltip_modifier_show_combo_is_troll_Description"	"需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。<br>（2）巨魔：所有友军的攻击速度+15。<br>（4）巨魔：所有友军的攻击速度+45。<br>（6）巨魔：所有友军获得效果：每次攻击命中都会使攻击速度增加10，最多可叠加20次。"
 		"DOTA_Tooltip_ability_is_troll_Lore"	"<font color=\"#b0c3d9\">种族技能：巫毒狂暴</font>\n需要己方场上有至少（N）个不同的此种族的棋子来触发效果（触发的多层效果可以叠加）。\n\n（2）巨魔：所有友军的攻击速度+15。\n（4）巨魔：所有友军的攻击速度+45。\n（6）巨魔：所有友军获得效果：每次攻击命中都会使攻击速度增加10，最多可叠加20次。"
-		"DOTA_Tooltip_ability_is_knight_Lore"	"<font color=\"#b0c3d9\">职业技能：王者祝福</font>\n需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。\n\n（2）骑士：所有友方骑士每3秒有30%概率获得一层减伤护盾和100点治疗。\n（4）骑士：所有友方骑士每3秒有25%概率获得一层减伤护盾和150点治疗。\n（6）骑士：所有友军每3秒有15%概率获得一层减伤护盾和250点治疗。\n所有骑士棋子都会在开始战斗时必获得一次减伤护盾。"
-		"DOTA_Tooltip_modifier_show_combo_is_knight_Description"	"需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。<br>（2）骑士：所有友方骑士每3秒有30%%概率获得一层减伤护盾和100点治疗。<br>（4）骑士：所有友方骑士每3秒有25%%概率获得一层减伤护盾和150点治疗。<br>（6）骑士：所有友军每3秒有15%%概率获得一层减伤护盾和250点治疗。<br>所有骑士棋子都会在开始战斗时必获得一次减伤护盾。"
 		"DOTA_Tooltip_ability_item_friends_discount_Description"	"你招募已拥有棋子的价格减半（向上取整）。"
 		"DOTA_Tooltip_ability_item_silingshu_Description"	"普通攻击吸血+20%%，战斗开始的时候获得40点法力值。\n<h1>棋子主动技：立即激活</h1>召唤1个死灵战士和1个死灵射手为你战斗，它们的生命值、持续时间和技能等级随携带者的棋子等级提高而提高。<br>冷却时间：<span class=\"GameplayValues GameplayVariable\">30</span>秒"
 		"DOTA_Tooltip_ability_item_minglingshu_Description"	"最大生命值+250，普通攻击吸血+20%%，使被攻击的敌人护甲-3，战斗开始的时候获得40点法力值。\n使你的召唤物获得效果：最大生命值+25%%，攻击力+25%%，持续时间+50%%，并且召唤数量+1。\n<h1>棋子主动技：立即激活</h1>召唤1个死灵战士和1个死灵射手为你战斗，它们的生命值、持续时间、技能等级随携带者的棋子等级提高而提高。<br>冷却时间：<span class=\"GameplayValues GameplayVariable\">30</span>秒"
@@ -3644,10 +3638,18 @@
 		"DOTA_Tooltip_ability_item_shrink_meister_Description"	"你的招募棋子有75%概率仅花费1金币，并使用-2等级信使的招募概率。"
 		"b203"	"琪琪海"
 		"DOTA_Tooltip_ability_item_more_creep"	"<font color=\"#ade55c\">百兽大游行</font>"
-		"item_more_creep"						"百兽大游行"
-
+		"item_more_creep"	"百兽大游行"
 		"DOTA_Tooltip_ability_oracle_mingyunsheling_Description"	"<h1>棋子主动技：满能量时激活</h1>神谕者暂时禁锢敌方棋子，使其无法物理攻击、魔法抗性降低，但免疫<font color=\"#a02d27\">物理伤害</font>。"
 		"DOTA_Tooltip_modifier_oracle_mingyunsheling_Description"	"无法物理攻击、魔法抗性降低，但免疫<font color=\"#a02d27\">物理伤害</font>。"
-		"round_cloud_line6"		" "
+		"round_cloud_line6"	" "
+		"DOTA_Tooltip_ability_is_knight_Lore"	"<font color=\"#b0c3d9\">职业技能：王者祝福</font>\n需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。\n\n（2）骑士：所有友方骑士每3秒有25%概率获得一层减伤护盾和100点治疗。\n（4）骑士：所有友方骑士每3秒有25%概率获得一层减伤护盾和150点治疗。\n（6）骑士：所有友军每3秒有15%概率获得一层减伤护盾和250点治疗。\n所有骑士棋子都会在开始战斗时必获得一次减伤护盾。"
+		"DOTA_Tooltip_modifier_show_combo_is_knight_Description"	"需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。<br>（2）骑士：所有友方骑士每3秒有25%%概率获得一层减伤护盾和100点治疗。<br>（4）骑士：所有友方骑士每3秒有25%%概率获得一层减伤护盾和150点治疗。<br>（6）骑士：所有友军每3秒有15%%概率获得一层减伤护盾和250点治疗。<br>所有骑士棋子都会在开始战斗时必获得一次减伤护盾。"
+		"DOTA_Tooltip_ability_is_monk_Lore"	"<font color=\"#b0c3d9\">职业技能：醉拳</font>\n需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。\n\n（2）武僧：所有友方武僧获得效果：造成任意伤害后有概率立即消灭生命值低于30%的敌方棋子。生命值百分比越低，消灭的概率越高。"
+		"DOTA_Tooltip_modifier_show_combo_is_monk_Description"	"需要己方场上有至少（N）个不同的此职业的棋子来触发效果（触发的多层效果可以叠加）。<br>（2）武僧：所有友方武僧获得效果：造成任意伤害后有概率立即消灭生命值低于30%%的敌方棋子。生命值百分比越低，消灭的概率越高。"
+
+		"DOTA_Tooltip_ability_item_qiangxi_Description"	"护甲+10，攻击速度+30。\n光环：周围1格友军护甲+5，攻击速度+15。\n光环：周围1格敌军护甲-5，攻击速度-15。"
+
+		"tips_image_close_panel_lootbox"		"关闭战利品选择框，我全都不想要！"
+		"text_confirm_close_panel_lootbox"		"确定要放弃战利品选择吗？"
 	}
 }

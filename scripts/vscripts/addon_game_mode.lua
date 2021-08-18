@@ -7815,6 +7815,7 @@ function LoadOnePVEEnemy(vi,team)
 			local hero = TeamId2Hero(team)
 			if hero:HasModifier('modifier_item_more_creep') then
 				x.kobold_result = true
+				x.kobold_hp_per = -25
 			end
 
 			--播放后续动画
@@ -10926,6 +10927,18 @@ function ChessAI(u,force_delay)
 				u.kobold_result = nil
 				u.kobold_item = nil
 				x.is_copied_kobold = true
+				if u.kobold_hp_per ~= nil then
+					ModMaxHP({
+						caster = u,
+						per = u.kobold_hp_per or 0,
+						is_heal = false,
+					})
+					ModMaxHP({
+						caster = x,
+						per = u.kobold_hp_per or 0,
+						is_heal = false,
+					})
+				end
 			end)
 		end
 		--shaman
@@ -15210,7 +15223,7 @@ function show_damage(keys)
 				local v_max_hp = caster:GetMaxHealth()
 				local v_hp_per = 1.0 * v_hp / v_max_hp
 
-				if RandomFloat(0,1) < 3*(0.33-v_hp_per) then
+				if RandomFloat(0,1) < 3.3*(0.3-v_hp_per) then
 				    play_particle("particles/econ/items/monkey_king/mk_ti9_immortal/mk_ti9_immortal_army_positions.vpcf",PATTACH_OVERHEAD_FOLLOW,caster,2)
 				    EmitSoundOn("monk.duang",caster)
 				    caster:ForceKill(false)
@@ -21453,6 +21466,13 @@ function DAC:OnRequestChooseLoot(keys)
 	if hero.loot_table == nil or hero.loot_table[loot_index] == nil then
 		return
 	end
+
+	if loot_index == -1 then
+		--放弃选择
+		hero.loot_table = nil
+		return
+	end
+
 	local loot = hero.loot_table[loot_index]
 	hero.loot_table = nil
 	if FindValueInTable(GameRules:GetGameModeEntity().DROP_RELIC_LIST,loot) == true then

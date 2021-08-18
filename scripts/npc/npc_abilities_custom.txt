@@ -4206,7 +4206,7 @@
 								"ModifierName"	"modifier_is_knight_buff_2"
 							}
 						}
-						"Chance"	"30"
+						"Chance"	"25"
 					}
 				}
 				"EffectName"	"effect/qishi/1.vpcf"
