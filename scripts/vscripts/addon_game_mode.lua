@@ -453,7 +453,7 @@ function DAC:InitGameMode()
 	}
     GameRules:GetGameModeEntity().battle_boss = {
 	    [1] = {  --天辉卫士
-	    	[1] = {x=4,y=8,enemy='pve_melee_good'},
+	    	[1] = {x=4,y=8,enemy='pve_melee_good'}, 
 	    	[2] = {x=5,y=8,enemy='pve_melee_good'},
 		},
 		[2] = {  --天辉中军
@@ -1298,7 +1298,7 @@ function DAC:InitGameMode()
 		[2] = {'chess_bm','chess_jugg','chess_shredder','chess_ck','chess_fur','chess_morph','chess_slark','chess_bat','chess_om','chess_pom','chess_sniper','chess_abaddon','chess_dazzle','chess_brew','chess_puck','chess_visage','chess_riki'},
 		[3] = {'chess_razor','chess_viper','chess_lyc','chess_lina','chess_tp','chess_veno','chess_sk','chess_rubick','chess_lc','chess_slardar','chess_sf','chess_meepo','chess_fv','chess_gs','chess_huskar','chess_pudge','chess_tb'}, --'chess_ember','chess_storm','chess_earth',
 		[4] = {'chess_doom','chess_nec','chess_medusa','chess_ga','chess_light','chess_ld','chess_chen','chess_wr','chess_br','chess_kunkka','chess_pangolier','chess_es','chess_snap','chess_mk'},
-		[5] = {'chess_kael','chess_ta','chess_gyro','chess_thd','chess_tech','chess_th','chess_enigma','chess_zeus','chess_et','chess_qop','chess_wl','chess_troll'}, --'chess_aw','chess_disruptor',
+		[5] = {'chess_kael','chess_ta','chess_gyro','chess_thd','chess_tech','chess_th','chess_enigma','chess_zeus','chess_et','chess_qop','chess_wl','chess_troll','chess_aw','chess_disruptor'}, --,
 	}
 	--金色机械核心可以开出的橙卡棋子（不受本局橙卡池影响）
 	GameRules:GetGameModeEntity().chess_list_by_mana_gold = {
@@ -1320,7 +1320,7 @@ function DAC:InitGameMode()
 	GameRules:GetGameModeEntity().chess_list_by_synergy = {
 		is_aqir = {'chess_veno','chess_sk','chess_br'},
 		is_beast = {'chess_eh','chess_hw','chess_pangolier','chess_lyc','chess_veno','chess_ld','chess_mk'}, --
-		is_demon = {'chess_ck','chess_tb','chess_sf','chess_gs','chess_doom','chess_qop'},
+		is_demon = {'chess_ck','chess_sf','chess_gs','chess_tb','chess_doom','chess_qop'},
 		is_dragon = {'chess_ww','chess_visage','chess_viper','chess_puck','chess_thd'},
 		is_dwarf = {'chess_sniper','chess_gyro'},
 		is_element = {'chess_tiny','chess_morph','chess_razor','chess_enigma'},
@@ -1625,6 +1625,7 @@ function DAC:InitGameMode()
 		[1] = 'item_lootbox_lv1',
 		[2] = 'item_lootbox_lv1',
 		[3] = 'item_lootbox_lv1',
+		[5] = 'item_lootbox_lv1',--为了绿皮船长的容错
 		[10] = 'item_relicbox',
 		[15] = 'item_lootbox_lv2',
 		[20] = 'item_relicbox',
@@ -7816,6 +7817,7 @@ function LoadOnePVEEnemy(vi,team)
 			if hero:HasModifier('modifier_item_more_creep') then
 				x.kobold_result = true
 				x.kobold_hp_per = -25
+				AddAbilityAndSetLevel(x,'more_creep')
 			end
 
 			--播放后续动画
@@ -7838,7 +7840,6 @@ function DropItem(unit)
 	if unit_level <= 2 or unit.is_summoned == true then 
 		return
 	end
-
 
 	local hero = TeamId2Hero(unit.at_team_id)
 	local ran = RandomInt(1,100)
@@ -7876,6 +7877,15 @@ function DropItem(unit)
 
 		--掉
 		local i = GameRules:GetGameModeEntity().DROP_ITEM_LIST[item_level][RandomInt(1,table.maxn(GameRules:GetGameModeEntity().DROP_ITEM_LIST[item_level]))]
+
+		if hero:HasModifier('modifier_item_double_lootbox') then
+			--绿皮船长的宝藏
+			i = GameRules:GetGameModeEntity().wave_2_lootbox[GameRules:GetGameModeEntity().battle_round - 1]
+			if i == 'item_relicbox' then
+				--圣物宝箱关的绿皮掉落，取-5关的宝箱
+				i = GameRules:GetGameModeEntity().wave_2_lootbox[GameRules:GetGameModeEntity().battle_round - 6]
+			end
+		end
 
 		-- hero:AddItemByName(i)
 
@@ -9742,7 +9752,7 @@ function AddComboAbility(teamid)
 								if FindValueInTable(kobold_base,'chess_meepo') == false then
 									table.insert(kobold_base,'chess_meepo')
 								end
-								if table.maxn(kk) ~= 2 then
+								if table.maxn(kk)%2 ~= 0 then
 									kobold_active = false
 								end
 							end
@@ -9750,7 +9760,7 @@ function AddComboAbility(teamid)
 								if FindValueInTable(kobold_base,'chess_aw') == false then
 									table.insert(kobold_base,'chess_aw')
 								end
-								if table.maxn(kk) ~= 2 then
+								if table.maxn(kk)%2 ~= 0 then
 									kobold_active = false
 								end
 							end
@@ -9769,7 +9779,7 @@ function AddComboAbility(teamid)
 								-- 		end
 								-- 	end
 								-- end
-								if table.maxn(kk) == 2 then						
+								if table.maxn(kk)%2 == 0 then						
 									table.sort(kk,function(a,b)
 										return table.maxn(GetAllItemsInUnits({[1] = a})) > table.maxn(GetAllItemsInUnits({[1] = b}))
 									end)
@@ -10131,7 +10141,7 @@ function AddComboAbility(teamid)
 								if FindValueInTable(kobold_base,'chess_meepo') == false then
 									table.insert(kobold_base,'chess_meepo')
 								end
-								if table.maxn(kk) ~= 2 then
+								if table.maxn(kk)%2 ~= 0 then
 									kobold_active = false
 								end
 							end
@@ -10139,7 +10149,7 @@ function AddComboAbility(teamid)
 								if FindValueInTable(kobold_base,'chess_aw') == false then
 									table.insert(kobold_base,'chess_aw')
 								end
-								if table.maxn(kk) ~= 2 then
+								if table.maxn(kk)%2 ~= 0 then
 									kobold_active = false
 								end
 							end
@@ -10158,7 +10168,7 @@ function AddComboAbility(teamid)
 								-- 		end
 								-- 	end
 								-- end
-								if table.maxn(kk) == 2 then						
+								if table.maxn(kk)%2 == 0 then						
 									table.sort(kk,function(a,b)
 										return table.maxn(GetAllItemsInUnits({[1] = a})) > table.maxn(GetAllItemsInUnits({[1] = b}))
 									end)
@@ -10938,6 +10948,7 @@ function ChessAI(u,force_delay)
 						per = u.kobold_hp_per or 0,
 						is_heal = false,
 					})
+					AddAbilityAndSetLevel(x,'more_creep')
 				end
 			end)
 		end
@@ -12920,20 +12931,20 @@ function FindEmptyGridAtUnit(u, front_flag,self_only)
 
 	for xx = -2,2 do
 		for yy = -2,2 do
-			if IsEmptyGrid(team_id,u.x+x,u.y+y) == true then
+			if IsEmptyGrid(team_id,u.x+xx,u.y+yy) == true then
 				if self_only then
 					if u:GetTeam() ~= 4 then
-						if IsInDefendArea(u.x+x,u.y+y) == true then
-							return XY2Vector(u.x+x,u.y+y,team_id)
+						if IsInDefendArea(u.x+xx,u.y+yy) == true then
+							return XY2Vector(u.x+xx,u.y+yy,team_id)
 						end
 					else
-						if IsInAttackArea(u.x+x,u.y+y) == true then
-							return XY2Vector(u.x+x,u.y+y,team_id)
+						if IsInAttackArea(u.x+xx,u.y+yy) == true then
+							return XY2Vector(u.x+xx,u.y+yy,team_id)
 						end
 					end
 				else
-					if IsIn8x8(u.x+x,u.y+y) == true then
-						return XY2Vector(u.x+x,u.y+y,team_id)
+					if IsIn8x8(u.x+xx,u.y+yy) == true then
+						return XY2Vector(u.x+xx,u.y+yy,team_id)
 					end
 				end
 			end
@@ -15223,7 +15234,7 @@ function show_damage(keys)
 				local v_max_hp = caster:GetMaxHealth()
 				local v_hp_per = 1.0 * v_hp / v_max_hp
 
-				if RandomFloat(0,1) < 3.3*(0.3-v_hp_per) then
+				if RandomFloat(0,1) < 4*(0.25-v_hp_per) then
 				    play_particle("particles/econ/items/monkey_king/mk_ti9_immortal/mk_ti9_immortal_army_positions.vpcf",PATTACH_OVERHEAD_FOLLOW,caster,2)
 				    EmitSoundOn("monk.duang",caster)
 				    caster:ForceKill(false)
@@ -20859,8 +20870,9 @@ function CombineChessPlus(units, advance_unit_name)
 	MakeTiny(uu)
 
 
-	--狗头人的特殊逻辑：3星送一只
-	if IsKobold(advance_unit_name) == true and GetChessNameStar(advance_unit_name) == 3 then
+	--米波的特殊逻辑：3星送一只
+	-- if IsKobold(advance_unit_name) == true and GetChessNameStar(advance_unit_name) == 3 then
+	if advance_unit_name == 'chess_meepo11' then
 		PlayChessDialogue(uu,'devided.1')
 		Timers:CreateTimer(0.5,function()
 			--创建狗棋子，播动画
@@ -21463,13 +21475,12 @@ function DAC:OnRequestChooseLoot(keys)
 	local player_id = keys.PlayerID
 	local loot_index = keys.loot_index
 	local hero = PlayerId2Hero(player_id)
-	if hero.loot_table == nil or hero.loot_table[loot_index] == nil then
-		return
-	end
-
-	if loot_index == -1 then
+	if loot_index ~= nil and loot_index == -1 then
 		--放弃选择
 		hero.loot_table = nil
+		return
+	end
+	if hero.loot_table == nil or hero.loot_table[loot_index] == nil then
 		return
 	end
 
@@ -21718,6 +21729,8 @@ function ItemBaoxiang(keys)
 		loot_str = loot_str..v..','
 	end
 
+	print('show_loot_box')
+
 	CustomGameEventManager:Send_ServerToTeam(caster:GetTeam(),"show_loot_box",{
 		key = GetClientKey(caster:GetTeam()),
 		loot_list = loot_str,
@@ -21755,7 +21768,7 @@ function GiveALootBox(hero)
 		return
 	end
 	GiveASingleLootBox(hero,item_name)
-	if hero:HasModifier('modifier_item_double_lootbox') then
+	if hero:HasModifier('modifier_item_more_creep') then
 		Timers:CreateTimer(0.4,function()
 			GiveASingleLootBox(hero,item_name)
 		end)	
@@ -23880,6 +23893,12 @@ function DAC:DamageFilter(keys)
 			end
 		end
 	end
+
+	if a:HasModifier('modifier_more_creep') then
+		--百兽大游行，伤害降低25%
+		keys.damage = keys.damage * 0.75
+	end
+
 
 	--伤害显示
 	if (GameRules:GetGameModeEntity().show_damage == true or keys.damage > 1000) and a:GetTeam() ~= 4  then

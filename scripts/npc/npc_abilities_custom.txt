@@ -134,6 +134,7 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"blade_fury_radius"	"250"
+				"LinkedSpecialBonus"	"special_bonus_unique_juggernaut"
 			}
 			"03"
 			{
@@ -145,7 +146,6 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"duration"	"5.0"
-				"LinkedSpecialBonus"	"special_bonus_unique_juggernaut"
 			}
 		}
 	}
@@ -301,11 +301,13 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"damage_min"	"10"
+				"LinkedSpecialBonus"	"special_bonus_unique_razor_4"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"damage_max"	"100 175 300"
+				"LinkedSpecialBonus"	"special_bonus_unique_razor_4"
 			}
 			"03"
 			{
@@ -682,6 +684,7 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"duration"	"2 2.5 3.5"
+				"LinkedSpecialBonus"	"special_bonus_unique_tidehunter_7"
 			}
 		}
 		"AbilityDamage"	"150 250 400"
@@ -3907,7 +3910,7 @@
 				"IsDebuff"	"0"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE"	"50"
+					"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE"	"75"
 				}
 				"IsBuff"	"1"
 				"States"	{}
@@ -5721,6 +5724,11 @@
 				"bounces_tooltip"	"5 7 10"
 				"LinkedSpecialBonus"	"special_bonus_unique_witch_doctor_3"
 			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bounce_bonus_damage"	"10 15 20"
+			}
 		}
 		"AbilityDamage"	"30 50 70"
 	}
@@ -6107,6 +6115,8 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"damage_reduction_percent"	"30"
+				"LinkedSpecialBonus"	"special_bonus_unique_luna_7"
+				"LinkedSpecialBonusOperation"	"SPECIAL_BONUS_SUBTRACT"
 			}
 		}
 	}
@@ -12720,6 +12730,23 @@
 		}
 	}
 
+	"more_creep"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/lycan_summon_wolves_png"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_more_creep"
+			{
+				"Properties"	{}
+				"IsHidden"	"0"
+				"Passive"	"1"
+				"IsDebuff"	"1"
+			}
+		}
+	}
+
 	"troll_axe"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -12904,6 +12931,7 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"crush_extra_slow"	"-10 -20 -40"
+				"LinkedSpecialBonus"	"special_bonus_unique_slardar_8"
 			}
 			"03"
 			{
@@ -12933,9 +12961,14 @@
 				"puddle_radius"	"600"
 				"RequiresScepter"	"1"
 			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"crush_damage"	"100 150 250"
+				"LinkedSpecialBonus"	"special_bonus_unique_slardar"
+			}
 		}
 		"HasScepterUpgrade"	"0"
-		"AbilityDamage"	"100 150 250"
 	}
 
 	"tidehunter_kraken_shell"
@@ -13716,7 +13749,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration"	"1.5 2 2.5"
+				"duration"	"1.5 1.5 1.5"
 			}
 			"02"
 			{
@@ -13726,7 +13759,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_per"	"15 20 25"
+				"damage_per"	"10 15 20"
 			}
 			"04"
 			{
@@ -13929,7 +13962,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"miss_per"	"25 50 75"
+				"miss_per"	"30 50 70"
 			}
 		}
 	}
