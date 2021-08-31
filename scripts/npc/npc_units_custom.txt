@@ -21827,7 +21827,7 @@
 		// Base mana.
 		"StatusMana"	"100"
 		// Mana regeneration rate.
-		"StatusManaRegen"	"8"
+		"StatusManaRegen"	"6"
 		// Team
 		// ----------------------------------------------------------------
 		// Team name.
@@ -28203,7 +28203,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"2850"
+		"StatusHealth"	"3800"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -28271,7 +28271,7 @@
 		"ProjectileSpeed"	"800"
 		"AttackAnimationPoint"	"0.3"
 		"HasInventory"	"1"
-		"Level"	"8"
+		"Level"	"9"
 		"ConsideredHero"	"1"
 		"HealthBarOffset"	"150"
 		"RingRadius"	"60"
@@ -38614,7 +38614,7 @@
 		"AttackRate"	"0.6"
 		"AttackRange"	"900"
 		"AttackRangeBuffer"	"50"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 		"ArmorPhysical"	"25"
 		"MovementSpeed"	"500"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
@@ -38719,7 +38719,7 @@
 		"AttackRate"	"0.8"
 		"AttackRange"	"600"
 		"AttackRangeBuffer"	"50"
-		"MagicalResistance"	"0"
+		"MagicalResistance"	"-50"
 		"ArmorPhysical"	"5"
 		"MovementSpeed"	"500"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
@@ -38771,7 +38771,7 @@
 		"AttackRate"	"0.8"
 		"AttackRange"	"600"
 		"AttackRangeBuffer"	"50"
-		"MagicalResistance"	"0"
+		"MagicalResistance"	"-50"
 		"ArmorPhysical"	"5"
 		"MovementSpeed"	"500"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
@@ -38823,7 +38823,7 @@
 		"AttackRate"	"0.6"
 		"AttackRange"	"400"
 		"AttackRangeBuffer"	"50"
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"25"
 		"ArmorPhysical"	"25"
 		"MovementSpeed"	"500"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"

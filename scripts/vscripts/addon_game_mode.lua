@@ -1302,7 +1302,7 @@ function DAC:InitGameMode()
 	}
 	--金色机械核心可以开出的橙卡棋子（不受本局橙卡池影响）
 	GameRules:GetGameModeEntity().chess_list_by_mana_gold = {
-		'chess_disruptor','chess_kael','chess_ta','chess_gyro','chess_thd','chess_tech','chess_th','chess_enigma','chess_zeus','chess_et','chess_wl','chess_qop','chess_troll'
+		'chess_disruptor','chess_kael','chess_ta','chess_gyro','chess_thd','chess_tech','chess_th','chess_enigma','chess_zeus','chess_et','chess_wl','chess_qop','chess_troll','chess_aw'
 	}
 	--黑暗机械核心可以开出的小黑屋棋子（不受本局橙卡池影响）
 	GameRules:GetGameModeEntity().chess_list_by_mana_black = {
@@ -7910,6 +7910,14 @@ function DropItem(unit)
 				hero.undrop_item_count = 0
 				local i = GameRules:GetGameModeEntity().ITEM_FOOD_LIST[RandomInt(1,table.maxn(GameRules:GetGameModeEntity().ITEM_FOOD_LIST))]
 
+				if hero:HasModifier('modifier_item_double_lootbox') then
+					--绿皮船长的宝藏
+					i = GameRules:GetGameModeEntity().wave_2_lootbox[GameRules:GetGameModeEntity().battle_round - 1]
+					if i == 'item_relicbox' then
+						--圣物宝箱关的绿皮掉落，取-5关的宝箱
+						i = GameRules:GetGameModeEntity().wave_2_lootbox[GameRules:GetGameModeEntity().battle_round - 6]
+					end
+				end
 				-- hero:AddItemByName(i)
 
 				local newItem = CreateItem( i, hero, hero )
@@ -10837,6 +10845,7 @@ function EvolveAChess(u)
 					SaveItem(u.team_id,u:entindex(),function()
 						if IsUnitExist(u) then
 							AddAbilityAndSetLevel(u,'no_hp_bar')
+							u.no_death_rattle = true
 							u:ForceKill(false)
 						end
 					end)
@@ -10844,6 +10853,7 @@ function EvolveAChess(u)
 					u:SetModelScale(0.0001)
 					if IsUnitExist(u) then
 						AddAbilityAndSetLevel(u,'no_hp_bar')
+						u.no_death_rattle = true
 						u:ForceKill(false)
 					end
 				end
@@ -10853,7 +10863,7 @@ function EvolveAChess(u)
 					if shaman_6 then
 						AddAbilityAndSetLevel(x,'is_shaman_buff_plus_plus')
 					end
-					x.no_death_rattle = true
+					-- x.no_death_rattle = true
 					x:SetHealth(x:GetMaxHealth()*hp_per)
 					EmitSoundOn("shaman.evolve",x)
 					play_particle("particles/econ/events/ti10/hero_levelup_ti10.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
@@ -11339,7 +11349,7 @@ function ChessAI(u,force_delay)
 			end
 
 			--如果棋子在不宜打断的状态，就暂缓运行AI
-			if u:IsStunned() == true or u.is_moving == true or u.is_comboing == true or u:IsChanneling() == true or u:IsFrozen() == true or HasMovingModifier(u) == true then
+			if u:IsStunned() == true or IsHexxed(u) == true or u.is_moving == true or u.is_comboing == true or u:IsChanneling() == true or u:IsFrozen() == true or HasMovingModifier(u) == true then
 				return 0.03
 			end
 
@@ -11404,6 +11414,11 @@ function ChessAI(u,force_delay)
 				end
 				--不执行其他AI操作，直到飓风长戟buff消失
 				return 0.03
+			end
+			--被魔化了
+			if u.is_mohua == true and u.is_evolving ~= true then
+				TransformAMohuaChess(u)
+				return 1
 			end
 			--使用物品
 			if IsChessCanUseItem(u) == true then
@@ -11522,12 +11537,6 @@ function ChessAI(u,force_delay)
 				if refresh_result ~= nil and refresh_result > 0 then
 					return refresh_result + ai_delay
 				end
-			end
-
-			--被魔化了
-			if u.is_mohua == true then
-				TransformAMohuaChess(u)
-				return 1
 			end
 
 			if u:HasModifier('modifier_om_multi_cast') == true then
@@ -15753,7 +15762,7 @@ function TriggerSheepStick(u)
 
 					if BlockByLinken(dog) == false then
 						dog:AddNewModifier(
-							u,
+							dog,
 							nil,
 							"modifier_shadow_shaman_voodoo",
 							{ duration = 8 }
@@ -16864,7 +16873,7 @@ function FindMohuaFriend(team_id, chessboard_id, p, exclude_entindex)
 end
 
 function TransformAMohuaChess(u)
-	if IsUnitExist(u) == false then
+	if IsUnitExist(u) == false or IsHexxed(u) == true then
 		return
 	end
 	u:Stop()
@@ -16902,10 +16911,21 @@ function TransformAMohuaChess(u)
 
 				if u:GetTeam() ~= 4 then
 					SaveItem(team_id,u:entindex(),function()
-						u:Destroy()
+						u:SetModelScale(0.0001)
+						if IsUnitExist(u) then
+							AddAbilityAndSetLevel(u,'no_hp_bar')
+							u.no_death_rattle = true
+							u:ForceKill(false)
+
+						end
 					end)
 				else
-					u:Destroy()
+					u:SetModelScale(0.0001)
+					if IsUnitExist(u) then
+						AddAbilityAndSetLevel(u,'no_hp_bar')
+						u.no_death_rattle = true
+						u:ForceKill(false)
+					end
 				end
 
 				

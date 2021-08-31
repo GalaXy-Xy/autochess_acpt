@@ -878,25 +878,6 @@
 		}
 	}
 
-	"hero_draw_card"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"oracle_fates_edict"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityCooldown"	"5"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"CASTER"
-				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
-				"Function"	"HeroDrawCard"
-			}
-		}
-	}
-
 	"empty1"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -1023,44 +1004,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	}
-
-	"is_machine"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"rattletrap_power_cogs"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"Modifiers"
-		{
-			"modifier_is_machine"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"6"
-				}
-			}
-		}
-	}
-
-	"is_ghost"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"doom_bringer_lvl_death"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"Modifiers"
-		{
-			"modifier_is_ghost"
-			{
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-6"
-				}
-				"Passive"	"1"
-				"IsHidden"	"1"
-			}
-		}
 	}
 
 	"is_dragon"
@@ -1710,23 +1653,6 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"miss_rate"	"40 60 80"
-			}
-		}
-	}
-
-	"beast_aura"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"beastmaster_call_of_the_wild_boar"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"Modifiers"
-		{
-			"modifier_beast_aura"
-			{
-				"Passive"	"1"
-				"ThinkInterval"	"1"
 			}
 		}
 	}
@@ -7429,67 +7355,6 @@
 		}
 	}
 
-	"tb_mohua"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"terrorblade_metamorphosis"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"MaxLevel"	"3"
-		"AbilityCastPoint"	"0.5"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
-		"AbilityCooldown"	"60"
-		"AbilityManaCost"	"100"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_tb_mohua"
-				"Duration"	"60"
-			}
-			"RunScript"
-			{
-				"Target"	"CASTER"
-				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
-				"Function"	"TbMohua"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_tb_mohua"
-			{
-				"Duration"	"60"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%damage"
-					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%range"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%speed"
-				}
-				"IsHidden"	"1"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"80 120 160"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"range"	"400"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"speed"	"40 60 80"
-			}
-		}
-	}
-
 	"tb_mohua_new"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -7521,12 +7386,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"mohua_tb_hp"	"900 1800 3600"
+				"mohua_tb_hp"	"750 1500 3000"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"mohua_tb_ad"	"155 270 460"
+				"mohua_tb_ad"	"110 180 290"
 			}
 		}
 	}
@@ -8718,53 +8583,6 @@
 			}
 		}
 		"AbilitySound"	"Hero_Lich.FrostArmor"
-	}
-
-	"winter_wyvern_winters_curse"
-	{
-		"AbilityTextureName"	"winter_wyvern_winters_curse"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"3"
-		"AbilityCastPoint"	"0.3"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCooldown"	"30"
-		"AbilityManaCost"	"100"
-		"AbilityCastRange"	"9999"
-		"AOERadius"	"250"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"250"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_reduction"	"50"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_amplification"	"0"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"60"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"duration"	"3 4 5"
-			}
-		}
-		"AbilitySound"	"Hero_WinterWyvern.WintersCurse.Target"
 	}
 
 	"winter_wyvern_cold_embrace"

@@ -17,7 +17,7 @@
 	{
 		"id"					"b103"
 		"name"					"翠翠林"
-		"vmap"					"chessboard/chessboard12"
+		"vmap"					"chessboard_disco"
 	}
 
 	"b104"
