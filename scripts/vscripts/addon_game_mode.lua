@@ -2433,6 +2433,8 @@ function DAC:InitGameMode()
 		h273 = "models/xuezhe/xuezhe.vmdl",
 		h274 = "models/xiaochou/xiaochou.vmdl",
 		h275 = "models/xiaochou/xiaochou.vmdl",
+		h276 = "models/shayu/shayu.vmdl",
+		h277 = "models/shayu/shayu.vmdl",
 
 		--珍藏信使 pro
 		h301 = "models/items/courier/bookwyrm/bookwyrm.vmdl",
@@ -2512,6 +2514,8 @@ function DAC:InitGameMode()
 		h375 = "models/xuezhe/xuezhe.vmdl",
 		h376 = "models/xiaochou/xiaochou.vmdl",
 		h377 = "models/items/courier/owl_courier/owl_courier.vmdl",
+		h378 = "models/shayu/shayu.vmdl",
+		h379 = "models/shayu/shayu.vmdl",
 
 		h398 = "models/guge/guge.vmdl",
 		h397 = "models/guge/guge.vmdl",
@@ -2591,6 +2595,7 @@ function DAC:InitGameMode()
 		h470 = "models/xuezhe/xuezhe.vmdl",
 		h471 = "models/xuezhe/xuezhe01.vmdl",
 		h472 = "models/xiaochou/xiaochou.vmdl",
+		h473 = "models/shayu/shayu.vmdl",
 		-- ================================================ --
 	
 		-- ================================================ --
@@ -2898,12 +2903,18 @@ function DAC:InitGameMode()
 		h470 = 1.6,
 		h471 = 1.55,
 
-		h274 = 1.15,
-		h275 = 1.15,
-		h376 = 1.22,
-		h472 = 1.3,
+		h274 = 1.1,
+		h275 = 1.1,
+		h376 = 1.18,
+		h472 = 1.25,
 
 		h377 = 1.0,
+
+		h276 = 1.1,
+		h277 = 1.1,
+		h378 = 1.2,
+		h379 = 1.2,
+		h473 = 1.3,
 	}
 
 	GameRules:GetGameModeEntity().sm_hero_flyup_size = {
@@ -2979,6 +2990,12 @@ function DAC:InitGameMode()
 		h275 = 1,
 		h376 = 2,
 		h472 = 3,
+
+		h276 = 2,
+		h277 = 3,
+		h378 = 0,
+		h379 = 4,
+		h473 = 1,
 	}
 
 
@@ -3288,6 +3305,12 @@ end
 
 
 function MakeGreevil(unit,is_flying)
+	if unit.courier_name == 'h276' or unit.courier_name == 'h277' or unit.courier_name == 'h378' or unit.courier_name == 'h379' or unit.courier_name == 'h473' then
+		local pos = PATTACH_ABSORIGIN_FOLLOW
+		local pp = ParticleManager:CreateParticle('effect/shayu/bose.vpcf', pos, unit)
+		ParticleManager:SetParticleControlEnt( pp, 0, unit, pos, nil, unit:GetOrigin(), true );
+	end
+
 	if unit.part1 ~= nil and unit.part1:IsNull() == false then
 		unit.part1:Kill()
 	end
@@ -4072,6 +4095,8 @@ function DAC:OnPlayerPickHero(keys)
 	    end
 		hero:SetMana(0)
 		hero:SetStashEnabled(false)
+
+		hero:RemoveModifierByName('modifier_wisp_tentacles')
 
 		hero.team = hero:GetTeam()
 		hero.team_id = hero:GetTeam()
@@ -10867,7 +10892,7 @@ function EvolveAChess(u)
 					x:SetHealth(x:GetMaxHealth()*hp_per)
 					EmitSoundOn("shaman.evolve",x)
 					play_particle("particles/econ/events/ti10/hero_levelup_ti10.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
-					x:AddNewModifier(x,nil,"modifier_kill",{duration = 15})
+					x:AddNewModifier(x,nil,"modifier_kill",{duration = 20})
 				end
 			end
 		end
@@ -14082,7 +14107,7 @@ end
 
 
 function StartGame()
-
+	MakeSharkEffect()
 	-- Timers:CreateTimer(3,function()
 	-- 	print('=====================1111111111==================')
 	-- 	DOTA_SpawnMapAtPosition('chessboard/chessboard01', Vector(-2048.2048,0), false,
@@ -15230,7 +15255,7 @@ function show_damage(keys)
 		AttackHeal({
 			attacker = attacker,
 			damage = damage,
-			per = 0.3,
+			per = 0.4,
 		})
 		play_particle("particles/generic_gameplay/generic_lifesteal.vpcf",PATTACH_OVERHEAD_FOLLOW,attacker,2)
 	end
@@ -18398,6 +18423,7 @@ function MakeTiny(x)
 	if x:GetUnitName() == 'chess_wr11' then
 		x.part4 = SpawnEntityFromTableSynchronous('prop_dynamic',{model="models/items/windrunner/windranger_ti8_immortal_shoulders/windranger_ti8_immortal_shoulders_arcana_refit.vmdl"})
 		x.part4:FollowEntity(x,true)
+		x.SetSkin(1)
 	end
 
 	
@@ -24518,7 +24544,7 @@ function GetMaxLevelChessFromDeadChessList(keys)
 	return max_level_chess
 end
 
---上帝之陈：复活
+--上帝之手：复活
 function ChenFuhuo(keys)
 	local caster = keys.caster
 	local ability = keys.ability
@@ -24544,7 +24570,8 @@ function ChenFuhuo(keys)
 			unit_name = 'chess_io1'
 		end
 
-		local p = FindRandomEmptyGridAtUnit(caster)
+		-- local p = FindRandomEmptyGridAtUnit(caster)
+		local p = FindEmptyGridAtUnit(caster, true)
 		local w = SummonAChess(caster.team_id,p,unit_name,caster.at_team_id or caster.team_id,100,100, nil, false)
 		if w ~= nil then
 			ExtendBeastBuff(w,caster)
@@ -27867,6 +27894,22 @@ function RandomSunStrike(keys)
 			})
 		end
 	end)
+end
+
+function MakeSharkEffect()
+	if Entities:FindByName(nil,"shayu01") == nil then
+		Timers:CreateTimer(1,function()
+			MakeSharkEffect()
+		end)
+		return
+	end
+	for i=1,3 do
+		local shayu = Entities:FindByName(nil,"shayu0"..i)
+		local pos = PATTACH_ABSORIGIN_FOLLOW
+
+		local pp = ParticleManager:CreateParticle('effect/shayu/bose.vpcf', pos, shayu)
+		ParticleManager:SetParticleControlEnt( pp, 0, shayu, pos, nil, shayu:GetOrigin(), true );
+	end
 end
 ----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------

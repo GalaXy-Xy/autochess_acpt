@@ -819,9 +819,9 @@
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
-		"ArmorPhysical"	"8"
+		"ArmorPhysical"	"7"
 		// Magical protection.
-		"MagicalResistance"	"20"
+		"MagicalResistance"	"0"
 		// Attack
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -941,9 +941,9 @@
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
-		"ArmorPhysical"	"8"
+		"ArmorPhysical"	"7"
 		// Magical protection.
-		"MagicalResistance"	"20"
+		"MagicalResistance"	"0"
 		// Attack
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1063,9 +1063,9 @@
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
-		"ArmorPhysical"	"8"
+		"ArmorPhysical"	"7"
 		// Magical protection.
-		"MagicalResistance"	"20"
+		"MagicalResistance"	"0"
 		// Attack
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -7609,7 +7609,7 @@
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"50"
 		"AttackDamageMax"	"100"
-		"AttackRate"	"1.1"
+		"AttackRate"	"1.2"
 		"AttackRange"	"205"
 		"Creature"
 		{
@@ -7737,7 +7737,7 @@
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"100"
 		"AttackDamageMax"	"200"
-		"AttackRate"	"1.1"
+		"AttackRate"	"1.2"
 		"AttackRange"	"205"
 		"Creature"
 		{
@@ -7865,7 +7865,7 @@
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"200"
 		"AttackDamageMax"	"400"
-		"AttackRate"	"1.1"
+		"AttackRate"	"1.2"
 		"AttackRange"	"205"
 		"Creature"
 		{
@@ -13877,7 +13877,7 @@
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
-		"ArmorPhysical"	"7"
+		"ArmorPhysical"	"6"
 		// Magical protection.
 		"MagicalResistance"	"0"
 		// Attack
@@ -13894,7 +13894,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"800"
+		"StatusHealth"	"750"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -14003,7 +14003,7 @@
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
-		"ArmorPhysical"	"7"
+		"ArmorPhysical"	"6"
 		// Magical protection.
 		"MagicalResistance"	"0"
 		// Attack
@@ -14020,7 +14020,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"1600"
+		"StatusHealth"	"1500"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -14129,7 +14129,7 @@
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
-		"ArmorPhysical"	"7"
+		"ArmorPhysical"	"6"
 		// Magical protection.
 		"MagicalResistance"	"0"
 		// Attack
@@ -14146,7 +14146,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"3200"
+		"StatusHealth"	"3000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -19018,7 +19018,7 @@
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"65"
 		"AttackDamageMax"	"75"
-		"AttackRate"	"1.1"
+		"AttackRate"	"1.0"
 		"AttackRange"	"600"
 		"Creature"
 		{
@@ -19140,7 +19140,7 @@
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"130"
 		"AttackDamageMax"	"150"
-		"AttackRate"	"1.1"
+		"AttackRate"	"1.0"
 		"AttackRange"	"600"
 		"Creature"
 		{
@@ -19262,7 +19262,7 @@
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"260"
 		"AttackDamageMax"	"300"
-		"AttackRate"	"1.1"
+		"AttackRate"	"1.0"
 		"AttackRange"	"600"
 		"Creature"
 		{
@@ -26881,7 +26881,7 @@
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"90"
 		"AttackDamageMax"	"120"
-		"AttackRate"	"1.0"
+		"AttackRate"	"0.9"
 		"AttackRange"	"400"
 		"Creature"
 		{
@@ -27003,7 +27003,7 @@
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"180"
 		"AttackDamageMax"	"240"
-		"AttackRate"	"1.0"
+		"AttackRate"	"0.9"
 		"AttackRange"	"400"
 		"Creature"
 		{
@@ -27121,7 +27121,7 @@
 		"MinimapIconSize"	"256"
 		"AttackDamageMin"	"360"
 		"AttackDamageMax"	"480"
-		"AttackRate"	"1.0"
+		"AttackRate"	"0.9"
 		"AttackRange"	"400"
 		"Creature"
 		{
@@ -36854,8 +36854,8 @@
 		"StatusStartingMana"	"0"
 		"VisionDaytimeRange"	"384"
 		"VisionNighttimeRange"	"384"
-		"AttackDamageMin"	"50"
-		"AttackDamageMax"	"110"
+		"AttackDamageMin"	"70"
+		"AttackDamageMax"	"150"
 		"AttackRate"	"1.2"
 		"AttackRange"	"205"
 		"AttackRangeBuffer"	"50"
@@ -36909,8 +36909,8 @@
 		"StatusStartingMana"	"0"
 		"VisionDaytimeRange"	"384"
 		"VisionNighttimeRange"	"384"
-		"AttackDamageMin"	"100"
-		"AttackDamageMax"	"160"
+		"AttackDamageMin"	"140"
+		"AttackDamageMax"	"220"
 		"AttackRate"	"1.2"
 		"AttackRange"	"205"
 		"AttackRangeBuffer"	"50"
@@ -36964,8 +36964,8 @@
 		"StatusStartingMana"	"0"
 		"VisionDaytimeRange"	"384"
 		"VisionNighttimeRange"	"384"
-		"AttackDamageMin"	"150"
-		"AttackDamageMax"	"220"
+		"AttackDamageMin"	"220"
+		"AttackDamageMax"	"280"
 		"AttackRate"	"1.2"
 		"AttackRange"	"205"
 		"AttackRangeBuffer"	"50"

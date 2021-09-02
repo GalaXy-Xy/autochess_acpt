@@ -70,6 +70,12 @@
 		"effect"	"particles/units/heroes/hero_alchemist/alchemist_berserk_potion_projectile.vpcf"
 		"sound"		"pj_hit.berserk_potionn"
 	}
+	"p109"
+	{
+		"name"		"闪光幽魂"
+		"effect"	"particles/units/heroes/hero_arc_warden/arc_warden_wraith_prj.vpcf"
+		"sound"		"pj_hit.spark_wraith"
+	}
 
 
 	"p201"

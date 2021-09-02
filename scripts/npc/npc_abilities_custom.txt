@@ -79,7 +79,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 		"MaxLevel"	"3"
 		"AbilityCastPoint"	"0.5"
-		"AbilityCooldown"	"7"
+		"AbilityCooldown"	"7 6 5"
 		"AbilityManaCost"	"100"
 		"AbilityCastRange"	"9999"
 		"AbilitySpecial"
@@ -373,7 +373,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"MaxLevel"	"3"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCooldown"	"30 25 15"
+		"AbilityCooldown"	"15"
 		"AbilityManaCost"	"100"
 		"AbilityCastRange"	"9999"
 		"AbilitySpecial"
@@ -381,7 +381,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"chill_duration"	"6"
+				"chill_duration"	"4 6 8"
 				"LinkedSpecialBonus"	"special_bonus_unique_visage_7"
 			}
 			"02"
@@ -392,7 +392,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attackspeed_bonus"	"20 30 40"
+				"attackspeed_bonus"	"30 40 50"
 			}
 			"04"
 			{
@@ -10238,7 +10238,7 @@
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
 		"MaxLevel"	"3"
 		"AbilityCastPoint"	"0.3"
-		"AbilityCooldown"	"15 12 9"
+		"AbilityCooldown"	"11 9 7"
 		"AbilityManaCost"	"100"
 		"AbilityCastRange"	"9999"
 		"precache"
@@ -11919,7 +11919,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"lifesteal_per"	"25"
+				"lifesteal_per"	"40"
 			}
 		}
 	}
@@ -12828,6 +12828,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCooldown"	"1"
@@ -13432,7 +13433,7 @@
 		"MaxLevel"	"3"
 		"AbilityCastPoint"	"0"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCooldown"	"8"
+		"AbilityCooldown"	"8 7 6"
 		"AbilityManaCost"	"100"
 		"precache"
 		{
@@ -13901,7 +13902,7 @@
 		// Casting
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"	"0.3 0.3 0.3"
-		"AbilityCooldown"	"5 4 3"
+		"AbilityCooldown"	"4 3 2"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"100"
@@ -14090,7 +14091,7 @@
 		"AbilityCastPoint"	"0.2"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"7 6 5"
+		"AbilityCooldown"	"6 5 4"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"100"
@@ -16266,6 +16267,27 @@
 		}
 	}
 
+	"e326"
+	{
+		"BaseClass"		"ability_datadriven"
+		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"precache"
+		{
+			"particle"	"particles/econ/events/ti10/hot_potato/disco_ball_channel.vpcf"
+		}
+		"Modifiers"
+		{
+			"modifier_texiao_star"
+			{
+				"Passive"	"1"
+				"EffectName"	"particles/econ/events/ti10/hot_potato/disco_ball_channel.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"IsHidden"	"1"
+			}
+		}
+	}
+
 	"e501"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -16828,7 +16850,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"mark_duration"	"10.0"
+				"mark_duration"	"10.0 15.0 25.0"
 			}
 			"05"
 			{
@@ -16863,7 +16885,7 @@
 			"11"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"debuff_amp"	"40 60 100"
+				"debuff_amp"	"50 75 125"
 			}
 		}
 		"IsGrantedByScepter"	"0"
@@ -16992,14 +17014,11 @@
 			}
 		}
 	}
+
 	// --------Personal-Test-Begin------------------------------------------------
 	"crystal_maiden_freezing_field"
 	{
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		// Casting
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityChannelTime"	"10"
-		"AOERadius"	"400"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"	"2"
@@ -17012,6 +17031,10 @@
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"100"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityChannelTime"	"10"
+		"AOERadius"	"400"
 		// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"ID"	"5129"
 		// Special
@@ -17275,8 +17298,8 @@
 	"wr_arcana_attack"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"harpy_storm_chain_lightning"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Modifiers"
 		{
 			"modifier_wr_arcana_attack"
@@ -17408,15 +17431,15 @@
 			}
 		}
 	}
-	
+
 	// =================================================================================================================
 	// 特效测试：900起
 	// =================================================================================================================
 	"e900"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"effect/liansai_dog/1.vpcf"
@@ -17436,8 +17459,8 @@
 	"e901"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"effect/roshan_ti10/flying.vpcf"
@@ -17457,8 +17480,8 @@
 	"e902"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/econ/items/slardar/slardar_ti10_head/slardar_ti10_gold_amp_shark.vpcf"
@@ -17474,11 +17497,12 @@
 			}
 		}
 	}
+
 	"e903"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/econ/events/summer_2021/summer_2021_emblem_effect.vpcf"
@@ -17494,11 +17518,12 @@
 			}
 		}
 	}
+
 	"e904"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/econ/events/ti10/emblem/ti10_emblem_effect.vpcf"
@@ -17514,12 +17539,12 @@
 			}
 		}
 	}
-	
+
 	"e905"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/econ/events/ti9/ti9_emblem_effect_loadout.vpcf"
@@ -17535,11 +17560,12 @@
 			}
 		}
 	}
+
 	"e906"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/econ/events/spring_2021/phase_boots_spring_2021_lvl2.vpcf"
@@ -17555,11 +17581,12 @@
 			}
 		}
 	}
+
 	"e907"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_void_spirit/planeshift/void_spirit_planeshift_untargetable.vpcf"
@@ -17575,11 +17602,12 @@
 			}
 		}
 	}
+
 	"e908"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_void_spirit/void_spirit_prison.vpcf"
@@ -17595,11 +17623,12 @@
 			}
 		}
 	}
+
 	"e909"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/galaxy/galaxy.vpcf"
@@ -17615,15 +17644,16 @@
 			}
 		}
 	}
+
 	"e910"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
-			"particle"	"particles/units/heroes/hero_leshrac/leshrac_disco_tnt.vpcf"
 			"particle"	"particles/econ/events/ti10/hot_potato/disco_ball_channel.vpcf"
+			"particle"	"particles/units/heroes/hero_leshrac/leshrac_disco_tnt.vpcf"
 		}
 		"Modifiers"
 		{
@@ -17643,11 +17673,12 @@
 			}
 		}
 	}
+
 	"e911"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/econ/events/spring_2021/fountain_regen_spring_2021_orbit.vpcf"
@@ -17671,11 +17702,12 @@
 			}
 		}
 	}
+
 	"e912"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/econ/items/luna/luna_ti9_weapon_gold/luna_ti9_gold_base_attack.vpcf"
@@ -17691,11 +17723,12 @@
 			}
 		}
 	}
+
 	"e913"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
 			"particle"	"particles/econ/events/diretide_2020/emblem/fall20_emblem_effect_candle.vpcf"
