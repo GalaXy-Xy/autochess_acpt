@@ -3873,12 +3873,11 @@
 		"DOTA_Tooltip_ability_is_god_Description"	"<h1>종족 특성: 독존</h1><font color=\"#656585\">아군 필드에 서로 다른 신 체스말 (N)개가 존재할 때 발동합니다.</font><br><br>(2) 신: 모든 신 제외 종족 특성이 활성화 되지 않은 아군 유닛들의 스킬 재사용 대기시간이 50%% 감소합니다.<br>(4) 신: 모든 신 제외 종족 특성이 활성화 되지 않은 아군 유닛들의 스킬 재사용 대기시간이 50%% 감소합니다.<br><br><img src='file://{images}/custom_game/chess_icon/chess_mars.png'><img src='file://{images}/custom_game/chess_icon/chess_oracle.png'><img src='file://{images}/custom_game/chess_icon/chess_rubick.png'><img src='file://{images}/custom_game/chess_icon/chess_zeus.png'><img src='file://{images}/custom_game/chess_icon/chess_et.png'>"
 		"DOTA_Tooltip_ability_is_god_Lore"	"만물의 조물주로 여겨지는 신명들은 용족한테 신의 힘을 선사한 후 민간세계로부터는 발길을 끊은듯 했으나 공허세력의 침범을 막기 위하여 또다시 나타났습니다."
 		"DOTA_Tooltip_modifier_show_combo_is_god_Description"	"아군 필드에 서로 다른 신 체스말 (N)개가 존재할 때 발동합니다.<br>(2) 신: 모든 신 제외 종족 특성이 활성화 되지 않은 아군 유닛들의 스킬 재사용 대기시간이 50%% 감소합니다.<br>(4) 신: 모든 신 제외 종족 특성이 활성화 되지 않은 아군 유닛들의 스킬 재사용 대기시간이 50%% 감소합니다."
-
 		"season_s15"	"S15 DeepSea"
 		"badge_title_s15"	"S15 - DeepSea"
 		"badge_text_s15"	"Badge awarded to players with excellent performance in DAC Season 15."
-		"e326"		"Light of Disco"
-		"p109"		"Spark Wraith"
-		"n304"		"Aegis of Immortal"
+		"e326"	"Light of Disco"
+		"p109"	"Spark Wraith"
+		"n304"	"Aegis of Immortal"
 	}
 }

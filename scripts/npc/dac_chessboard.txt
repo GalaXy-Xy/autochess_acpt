@@ -36,7 +36,7 @@
 	{
 		"id"					"b106"
 		"name"					"沙沙寨"
-		"vmap"					"chessboard/chessboard08"
+		"vmap"					"chessboard/chessboard12"
 	}
 	"b107"
 	{

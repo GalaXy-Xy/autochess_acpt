@@ -1295,10 +1295,10 @@ function DAC:InitGameMode()
 	--按费用抽卡的棋子列表（受本局橙卡池影响）
 	GameRules:GetGameModeEntity().chess_list_by_mana = {
 		[1] = {'chess_cm','chess_axe','chess_eh','chess_clock','chess_ss','chess_dr','chess_tk','chess_am','chess_tiny','chess_mars','chess_wd','chess_sb','chess_luna','chess_oracle','chess_ww','chess_dw','chess_hw'},--'chess_tusk'
-		[2] = {'chess_bm','chess_jugg','chess_shredder','chess_ck','chess_fur','chess_morph','chess_slark','chess_bat','chess_om','chess_pom','chess_sniper','chess_abaddon','chess_dazzle','chess_brew','chess_puck','chess_visage','chess_riki'},
-		[3] = {'chess_razor','chess_viper','chess_lyc','chess_lina','chess_tp','chess_veno','chess_sk','chess_rubick','chess_lc','chess_slardar','chess_sf','chess_meepo','chess_fv','chess_gs','chess_huskar','chess_pudge','chess_tb'}, --'chess_ember','chess_storm','chess_earth',
-		[4] = {'chess_doom','chess_nec','chess_medusa','chess_ga','chess_light','chess_ld','chess_chen','chess_wr','chess_br','chess_kunkka','chess_pangolier','chess_es','chess_snap','chess_mk'},
-		[5] = {'chess_kael','chess_ta','chess_gyro','chess_thd','chess_tech','chess_th','chess_enigma','chess_zeus','chess_et','chess_qop','chess_wl','chess_troll','chess_aw','chess_disruptor'}, --,
+		[2] = {'chess_bm','chess_jugg','chess_shredder','chess_ck','chess_fur','chess_morph','chess_slark','chess_bat','chess_om','chess_pom','chess_sniper','chess_abaddon','chess_dazzle','chess_brew','chess_puck','chess_riki'},
+		[3] = {'chess_razor','chess_viper','chess_lina','chess_tp','chess_veno','chess_sk','chess_rubick','chess_lc','chess_slardar','chess_sf','chess_meepo','chess_fv','chess_gs','chess_huskar','chess_pudge','chess_tb'}, --'chess_ember','chess_storm','chess_earth',
+		[4] = {'chess_dk','chess_doom','chess_nec','chess_medusa','chess_ga','chess_light','chess_ld','chess_chen','chess_wr','chess_br','chess_kunkka','chess_pangolier','chess_es','chess_snap','chess_mk'},
+		[5] = {'chess_ta','chess_gyro','chess_thd','chess_tech','chess_th','chess_enigma','chess_zeus','chess_et','chess_qop','chess_wl','chess_troll','chess_aw','chess_disruptor','chess_kael'}, --'chess_kael',
 	}
 	--金色机械核心可以开出的橙卡棋子（不受本局橙卡池影响）
 	GameRules:GetGameModeEntity().chess_list_by_mana_gold = {
@@ -1319,21 +1319,21 @@ function DAC:InitGameMode()
 	--按种族/职业索引的棋子列表（受本局橙卡池影响）
 	GameRules:GetGameModeEntity().chess_list_by_synergy = {
 		is_aqir = {'chess_veno','chess_sk','chess_br'},
-		is_beast = {'chess_eh','chess_hw','chess_pangolier','chess_lyc','chess_veno','chess_ld','chess_mk'}, --
+		is_beast = {'chess_eh','chess_hw','chess_veno','chess_pangolier','chess_ld','chess_mk'}, --
 		is_demon = {'chess_ck','chess_sf','chess_gs','chess_tb','chess_doom','chess_qop'},
-		is_dragon = {'chess_ww','chess_visage','chess_viper','chess_puck','chess_thd'},
+		is_dragon = {'chess_ww','chess_viper','chess_puck','chess_dk','chess_thd'},
 		is_dwarf = {'chess_sniper','chess_gyro'},
 		is_element = {'chess_tiny','chess_morph','chess_razor','chess_enigma'},
 		is_elf = {'chess_dw','chess_am','chess_luna','chess_fur','chess_pom','chess_puck','chess_tp','chess_wr','chess_ta','chess_kael'},--,'chess_dw','chess_pa'
 		is_goblin = {'chess_clock','chess_tk','chess_shredder','chess_ga','chess_tech','chess_snap'},
 		is_god = {'chess_mars','chess_oracle','chess_rubick','chess_zeus','chess_et'},
-		is_human = {'chess_cm','chess_lyc','chess_lina','chess_lc','chess_light','chess_kunkka'},
+		is_human = {'chess_cm','chess_lina','chess_lc','chess_dk','chess_light','chess_kunkka'},
 		is_naga = {'chess_slark','chess_slardar','chess_medusa','chess_th'},
 		is_ogre = {'chess_om','chess_ga'},
 		is_orc = {'chess_axe','chess_bm','chess_jugg','chess_chen','chess_disruptor','chess_wl'},
 		is_pandaman = {'chess_brew'},
 		is_troll = {'chess_ss','chess_wd','chess_bat','chess_dazzle','chess_huskar','chess_troll'},
-		is_undead = {'chess_ww','chess_dr','chess_visage','chess_abaddon','chess_pudge','chess_nec'},
+		is_undead = {'chess_ww','chess_dr','chess_abaddon','chess_pudge','chess_nec'},
 		is_tauren = {'chess_sb','chess_es','chess_et'},
 		is_kobold = {'chess_meepo','chess_aw'},
 		is_nraqi = {'chess_fv'},
@@ -1342,34 +1342,34 @@ function DAC:InitGameMode()
 		is_assassin = {'chess_sb','chess_riki','chess_morph','chess_slark','chess_viper','chess_sk','chess_fv','chess_pangolier','chess_ta','chess_qop'},
 		is_demonhunter = {'chess_am','chess_tb'}, 
 		is_druid = {'chess_eh','chess_fur','chess_tp','chess_ld','chess_et'},
-		is_hunter = {'chess_dr','chess_hw','chess_bm','chess_visage','chess_pom','chess_sniper','chess_br','chess_medusa','chess_wr','chess_th'},
-		is_knight = {'chess_luna','chess_ck','chess_bat','chess_abaddon','chess_lc','chess_snap'},--'chess_dk',
+		is_hunter = {'chess_dr','chess_hw','chess_bm','chess_pom','chess_sniper','chess_br','chess_medusa','chess_wr','chess_th'},
+		is_knight = {'chess_luna','chess_ck','chess_bat','chess_abaddon','chess_lc','chess_dk','chess_snap'},
 		is_mage = {'chess_ww','chess_cm','chess_om','chess_puck','chess_razor','chess_lina','chess_light','chess_kael','chess_thd','chess_zeus'},
 		is_mech = {'chess_clock','chess_tk','chess_shredder','chess_meepo','chess_gyro','chess_tech'},
 		is_monk = {'chess_brew','chess_mk'},--
 		is_priest = {'chess_oracle','chess_dazzle','chess_chen'},
 		is_shaman = {'chess_ss','chess_es','chess_aw','chess_disruptor'},
 		is_warlock = {'chess_wd','chess_veno','chess_sf','chess_nec','chess_ga','chess_enigma','chess_wl'},
-		is_warrior = {'chess_axe','chess_tiny','chess_mars','chess_jugg','chess_lyc','chess_slardar','chess_pudge','chess_huskar','chess_doom','chess_kunkka','chess_troll'},
+		is_warrior = {'chess_axe','chess_tiny','chess_mars','chess_jugg','chess_slardar','chess_pudge','chess_huskar','chess_doom','chess_kunkka','chess_troll'},
 		is_wizard = {'chess_dw','chess_rubick','chess_gs'},
 	}
 	GameRules:GetGameModeEntity().chess_list_by_synergy_black = {
 		is_aqir = {'chess_na'},
-		is_beast = {'chess_tusk'},
+		is_beast = {'chess_tusk','chess_lyc'},
 		is_demon = {'chess_lion','chess_sven'},
-		is_dragon = {'chess_dk'},
+		is_dragon = {'chess_visage'},
 		is_dwarf = {},
 		is_element = {},
 		is_elf = {'chess_pa'},
 		is_goblin = {'chess_bh'},
 		is_god = {},
-		is_human = {'chess_ok','chess_dk'},
+		is_human = {'chess_ok','chess_lyc'},
 		is_naga = {},
 		is_ogre = {},
 		is_orc = {'chess_bs'},
 		is_pandaman = {'chess_ember','chess_storm','chess_earth'},
 		is_troll = {},
-		is_undead = {'chess_dp','chess_lich','chess_vs','chess_na'},
+		is_undead = {'chess_dp','chess_lich','chess_vs','chess_na','chess_visage'},
 		is_tauren = {},
 		is_kobold = {},
 		is_nraqi = {},
@@ -1377,15 +1377,15 @@ function DAC:InitGameMode()
 		is_assassin = {'chess_pa','chess_bh','chess_ember','chess_na'},
 		is_demonhunter = {'chess_vs'},
 		is_druid = {},
-		is_hunter = {},
-		is_knight = {'chess_ok','chess_dk'},
+		is_hunter = {'chess_visage'},
+		is_knight = {'chess_ok'},
 		is_mage = {'chess_lich','chess_storm'},
 		is_mech = {},
 		is_monk = {},
 		is_priest = {},
 		is_shaman = {'chess_bs','chess_earth'},
 		is_warlock = {'chess_dp'},
-		is_warrior = {'chess_tusk','chess_sven'},
+		is_warrior = {'chess_tusk','chess_lyc','chess_sven'},
 		is_wizard = {'chess_lion'},
 	}
 	GameRules:GetGameModeEntity().chess_list_ssr = {'chess_nec_ssr','chess_ck_ssr','chess_ss_ssr','chess_brew_ssr'} 
@@ -1439,7 +1439,7 @@ function DAC:InitGameMode()
 		chess_ga = 4,
 		chess_dk = 4,
 		chess_gyro = 5,
-		chess_lich = 5,
+		chess_lich = 4,
 		chess_th = 5,
 		chess_enigma = 5,
 		chess_tech = 5,
@@ -1685,7 +1685,7 @@ function DAC:InitGameMode()
 		chess_luna = 'luna_moon_glaive',
 		chess_tp = 'tp_seed',
 		chess_sf = 'shadow_fiend_requiem_of_souls_lua',
-		chess_dk = 'dragon_knight_elder_dragon_form',
+		chess_dk = 'dk_dragon_form',
 		chess_viper = 'viper_viper_strike',
 		chess_medusa = 'medusa_stone_gaze',
 		chess_disruptor = 'ability_disruptor_static_storm',
@@ -1705,7 +1705,6 @@ function DAC:InitGameMode()
 		chess_dp = 'death_prophet_exorcism',
 		--
 		chess_fv = 'fv_zhao',
-		chess_kael = 'kael_???',
 		--
 		chess_zeus = 'zeus_thunder',
 		chess_mars = 'mars_bulwark_attack',
@@ -1763,7 +1762,7 @@ function DAC:InitGameMode()
 		chess_luna1 = 'luna_moon_glaive',
 		chess_tp1 = 'tp_seed',
 		chess_sf1 = 'shadow_fiend_requiem_of_souls_lua',
-		chess_dk1 = 'dragon_knight_elder_dragon_form',
+		chess_dk1 = 'dk_dragon_form',
 		chess_viper1 = 'viper_viper_strike',
 		chess_medusa1 = 'medusa_stone_gaze',
 		chess_disruptor1 = 'ability_disruptor_static_storm',
@@ -1782,7 +1781,6 @@ function DAC:InitGameMode()
 		chess_dp1 = 'death_prophet_exorcism',
 		--
 		chess_fv1 = 'fv_zhao',
-		chess_kael1 = 'kael_???',
 		--
 		chess_zeus1 = 'zeus_thunder',
 		chess_mars1 = 'mars_bulwark_attack',
@@ -1841,7 +1839,7 @@ function DAC:InitGameMode()
 		chess_luna11 = 'luna_moon_glaive',
 		chess_tp11 = 'tp_seed',
 		chess_sf11 = 'shadow_fiend_requiem_of_souls_lua',
-		chess_dk11 = 'dragon_knight_elder_dragon_form',
+		chess_dk11 = 'dk_dragon_form',
 		chess_viper11 = 'viper_viper_strike',
 		chess_medusa11 = 'medusa_stone_gaze',
 		chess_disruptor11 = 'ability_disruptor_static_storm',
@@ -1860,7 +1858,6 @@ function DAC:InitGameMode()
 		chess_dp11 = 'death_prophet_exorcism',
 		--
 		chess_fv11 = 'fv_zhao',
-		chess_kael11 = 'kael_???',
 		--
 		chess_zeus11 = 'zeus_thunder',
 		chess_mars11 = 'mars_bulwark_attack',
@@ -2116,12 +2113,11 @@ function DAC:InitGameMode()
 			necrolyte_death_pulse = 2,
 			templar_assassin_refraction = 2,
 			midnight_pulse_datadriven = 29,
-			--
 			batrider_sticky_napalm = 3,
 			luna_moon_glaive = 0,
 			tp_seed = 10,
 			shadow_fiend_requiem_of_souls_lua = 2,
-			dragon_knight_elder_dragon_form = 2,
+			dk_dragon_form = 2,
 			viper_viper_strike = 10,
 			medusa_stone_gaze = 2,
 			disruptor_static_storm = 29,
@@ -10835,39 +10831,44 @@ function LoadOneCloudChess(vi,team)
 	end)
 end
 
-function EvolveAChess(u)
-	if u.evolving == true or (u.evolve_result == nil and u.evolve_result_6 == nil) then
+function TransformAChess(u,new_chess_name,item_inherited,cb)
+	if u.transforming == true then
 		return
 	end
-	u.is_evolving = true
-	--避免棋子被魔化
-	u.is_mohua = true
+	u.transforming = true
+	if IsUnitExist(u) == false or IsHexxed(u) == true then
+		return
+	end
+	u:Stop()
 	FillEmptySlot(u)
-	-- local transfer_duration = RandomFloat(0.1,0.5)
-	-- u:FindAbilityByName("dac_guai_base"):ApplyDataDrivenModifier(u,u,'modifier_transfer_buff',{ duration = transfer_duration})
-	-- play_particle("effect/evolve.vpcf",PATTACH_ABSORIGIN_FOLLOW,u,transfer_duration)
 	AddAbilityAndSetLevel(u,'jiaoxie')
 	RemoveAbilityAndModifier(u,'jiaoxie_wudi')
-	-- Timers:CreateTimer(transfer_duration,function()
+
+	u:SetModelScale(0.5)
+
+	Timers:CreateTimer(0.1,function()
 		if IsUnitExist(u) == true then
-			local aposition = XY2Vector(u.x,u.y,u.at_team_id or u.team_id)
 			local team_id = u:GetTeam()
-			local at_team_id = u.at_team_id or u.team_id
+			local chessboard_id = u.at_team_id or u.team_id
+			local aposition = XY2Vector(u.x,u.y,chessboard_id) or u:GetAbsOrigin()
+
 			local items = GetAllItemsInUnits({[1] = u})
 			local hp_per = u:GetHealth()/u:GetMaxHealth()
-			local shaman_6 = u:HasModifier('modifier_is_shaman_buff_plus_plus')
-
+			RemoveFromToBeDestroyList(u)
 			if IsUnitExist(u) == true then
-				RemoveFromToBeDestroyList(u)
 				if u:FindAbilityByName('dr_shooter_aura') ~= nil then
 					RemoveDrShooterAura({
 						caster = u,
 						ability = u:FindAbilityByName('dr_shooter_aura'),
 					})
 				end
-				if team_id ~= 4 then
-					u:SetModelScale(0.0001)
-					SaveItem(u.team_id,u:entindex(),function()
+
+				local forward_vector = u:GetForwardVector()
+				forward_vector.z = 0
+
+				if u:GetTeam() ~= 4 then
+					SaveItem(team_id,u:entindex(),function()
+						u:SetModelScale(0.0001)
 						if IsUnitExist(u) then
 							AddAbilityAndSetLevel(u,'no_hp_bar')
 							u.no_death_rattle = true
@@ -10883,20 +10884,36 @@ function EvolveAChess(u)
 					end
 				end
 
-				local x = SummonAChess(team_id,aposition,u.evolve_result or u.evolve_result_6,at_team_id,100,0,{},false)
-				if IsUnitExist(x) then
-					if shaman_6 then
-						AddAbilityAndSetLevel(x,'is_shaman_buff_plus_plus')
-					end
-					-- x.no_death_rattle = true
-					x:SetHealth(x:GetMaxHealth()*hp_per)
-					EmitSoundOn("shaman.evolve",x)
-					play_particle("particles/econ/events/ti10/hero_levelup_ti10.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
-					x:AddNewModifier(x,nil,"modifier_kill",{duration = 20})
+				if not item_inherited then
+					items = {}
+				end
+				local x = SummonAChess(team_id,aposition,new_chess_name,chessboard_id,100,0,items,true,forward_vector)
+				x:SetHealth(x:GetMaxHealth()*hp_per)
+				if cb then
+					cb(x)
 				end
 			end
 		end
-	-- end)
+	end)
+end
+function EvolveAChess(u)
+	if u.evolve_result == nil and u.evolve_result_6 == nil then
+		return
+	end
+	-- local transfer_duration = RandomFloat(0.1,0.5)
+	-- u:FindAbilityByName("dac_guai_base"):ApplyDataDrivenModifier(u,u,'modifier_transfer_buff',{ duration = transfer_duration})
+	-- play_particle("effect/evolve.vpcf",PATTACH_ABSORIGIN_FOLLOW,u,transfer_duration)
+	local shaman_6 = u:HasModifier('modifier_is_shaman_buff_plus_plus')
+	TransformAChess(u,u.evolve_result or u.evolve_result_6,false,function(x)
+		if IsUnitExist(x) then
+			if shaman_6 then
+				AddAbilityAndSetLevel(x,'is_shaman_buff_plus_plus')
+			end
+			EmitSoundOn("shaman.evolve",x)
+			play_particle("particles/econ/events/ti10/hero_levelup_ti10.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
+			x:AddNewModifier(x,nil,"modifier_kill",{duration = 20})
+		end
+	end)
 end
 function DevolveAChess(u)
 	FillEmptySlot(u)
@@ -10905,44 +10922,153 @@ function DevolveAChess(u)
 	AddAbilityAndSetLevel(u,'jiaoxie')
 	RemoveAbilityAndModifier(u,'jiaoxie_wudi')
 	Timers:CreateTimer(transfer_duration,function()
-		if IsUnitExist(u) == true then
-			local aposition = XY2Vector(u.x,u.y,u.at_team_id or u.team_id)
-			local team_id = u:GetTeam()
-			local at_team_id = u.at_team_id or u.team_id
-			local items = GetAllItemsInUnits({[1] = u})
-			local hp_per = u:GetHealth()/u:GetMaxHealth()
-			local shaman_6 = u:HasModifier('modifier_is_shaman_buff_plus_plus')
-			RemoveFromToBeDestroyList(u)
-			if IsUnitExist(u) == true then
-				if u:FindAbilityByName('dr_shooter_aura') ~= nil then
-					RemoveDrShooterAura({
-						caster = u,
-						ability = u:FindAbilityByName('dr_shooter_aura'),
-					})
-				end
-				if team_id ~= 4 then
-					SaveItem(u.team_id,u:entindex(),function()
-						if IsUnitExist(u) then
-							u:Destroy()
-						end
-					end)
-				else
-					if IsUnitExist(u) then
-						u:Destroy()
-					end
-				end
-				local x = SummonAChess(team_id,aposition,u.devolve_result,at_team_id,100,0,items,true)
-				if shaman_6 then
-					AddAbilityAndSetLevel(x,'is_shaman_buff_plus_plus')
-				end
-				x:SetHealth(x:GetMaxHealth()*hp_per)
+		TransformAChess(u,u.devolve_result,false,function(x)
+			if IsUnitExist(x) then
 				EmitSoundOn("shaman.devolve",x)
 				play_particle("particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
 			end
+		end)
+	end)
+end
+function TransformAMohuaChess(u)
+	local has_demon_buff = false
+	if u:FindAbilityByName('is_demon_buff')~=nil then
+		has_demon_buff = true 
+	end
+	local star = GetChessStar(u)
+	local new_chess_name = 'chess_tb_mohua'..star
+	TransformAChess(u,new_chess_name,true,function(x)
+		if IsUnitExist(x) then
+			play_particle("particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
+			EmitSoundOn("Hero_Terrorblade.Metamorphosis",x)
+			if has_demon_buff then
+				AddAbilityAndSetLevel(x,'is_demon_buff')
+			end
+			PlayParticleOnUnitUntilDeath({
+				caster = x,
+				p = "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf",
+			})
 		end
 	end)
 end
-
+function RefreshKaelOrbandAbility(kael,find_combo)
+	local a_level = 1
+	if string.find(kael:GetUnitName(),'1') then
+		a_level = 2
+	end
+	if string.find(kael:GetUnitName(),'11') then
+		a_level = 3
+	end
+	local a_list = {
+		is_warrior = 'forge_spirit',
+        is_assassin = 'invoker_deafening_blast',
+        is_mage = 'invoker_emp',
+        is_hunter = 'invoker_deafening_blast',
+        is_elf = 'invoker_chaos_meteor',
+        is_warlock = 'alacrity',
+        is_troll = 'invoker_deafening_blast',
+        is_beast = 'invoker_chaos_meteor',
+        is_human = 'invoker_sun_strike',
+        is_undead = 'invoker_chaos_meteor',
+        is_orc = 'forge_spirit',
+        is_goblin = 'forge_spirit',
+        is_mech = 'invoker_sun_strike',
+        is_knight = 'invoker_sun_strike',
+        is_dragon = 'invoker_tornado',
+        is_shaman = 'invoker_tornado',
+        is_druid = 'invoker_chaos_meteor',
+        is_wizard = 'alacrity',
+        is_naga = 'alacrity',
+        is_element = 'forge_spirit',
+        is_god = 'invoker_emp',
+        is_pandaman = 'invoker_emp',
+        is_aqir = 'invoker_chaos_meteor',
+        is_priest = 'invoker_sun_strike',
+        is_dwarf = 'invoker_deafening_blast',
+        is_demonhunter = 'invoker_deafening_blast',
+        is_ogre = 'forge_spirit',
+        is_demon = 'invoker_sun_strike',
+        is_monk = 'invoker_tornado',
+        is_tauren = 'alacrity',
+        is_kobold = 'invoker_chaos_meteor',
+        is_nraqi = 'invoker_sun_strike',
+        is_satyr = 'invoker_tornado',
+	}
+	local aa_list = {
+		[1] = 'is_warrior',
+        [2] = 'is_assassin',
+        [3] = 'is_mage',
+        [4] = 'is_hunter',
+        [5] = 'is_elf',
+        [6] = 'is_warlock',
+        [7] = 'is_troll',
+        [8] = 'is_beast',
+        [9] = 'is_human',
+        [10] = 'is_undead',
+        [11] = 'is_orc',
+        [12] = 'is_goblin',
+        [13] = 'is_mech',
+        [14] = 'is_knight',
+        [15] = 'is_dragon',
+        [16] = 'is_shaman',
+        [17] = 'is_druid',
+        [18] = 'is_wizard',
+        [19] = 'is_naga',
+        [20] = 'is_element',
+        [21] = 'is_god',
+        [22] = 'is_pandaman',
+        [23] = 'is_aqir',
+        [24] = 'is_priest',
+        [25] = 'is_dwarf',
+        [26] = 'is_demonhunter',
+        [27] = 'is_ogre',
+        [28] = 'is_demon',
+        [29] = 'is_monk',
+        [30] = 'is_tauren',
+        [31] = 'is_kobold',
+        [32] = 'is_nraqi',
+        [33] = 'is_satyr',
+	}
+	local kael_ability = a_list[aa_list[RandomInt(1,table.maxn(aa_list))]]
+	if find_combo ~= nil and a_list[find_combo] ~= nil then
+		kael_ability = a_list[find_combo]
+	end
+	local orb_table = {
+		forge_spirit = {'invoker_exort','invoker_exort','invoker_quas'},
+		invoker_ice_wall = {'invoker_exort','invoker_quas','invoker_quas'},
+		invoker_sun_strike = {'invoker_exort','invoker_exort','invoker_exort'},
+		invoker_chaos_meteor = {'invoker_exort','invoker_exort','invoker_wex'},
+		alacrity = {'invoker_exort','invoker_wex','invoker_wex'},
+		invoker_emp = {'invoker_wex','invoker_wex','invoker_wex'},
+		invoker_cold_snap = {'invoker_quas','invoker_quas','invoker_quas'},
+		invoker_tornado = {'invoker_quas','invoker_wex','invoker_wex'},
+		invoker_deafening_blast = {'invoker_quas','invoker_wex','invoker_exort'},
+	}
+	AddAbilityAndSetLevel(kael,'invoker_quas',a_level)
+	AddAbilityAndSetLevel(kael,'invoker_wex',a_level)
+	AddAbilityAndSetLevel(kael,'invoker_exort',a_level)
+	AddAbilityAndSetLevel(kael,'invoker_invoke',a_level)
+	RemoveAbilityAndModifier(kael,"modifier_invoker_wex_instance")
+	RemoveAbilityAndModifier(kael,"modifier_invoker_quas_instance")
+	RemoveAbilityAndModifier(kael,"modifier_invoker_exort_instance")
+	play_particle("particles/units/heroes/hero_invoker/invoker_invoke.vpcf",PATTACH_ABSORIGIN_FOLLOW,kael,3)
+	for iii,vvv in pairs(orb_table[kael_ability]) do
+		kael:AddNewModifier(kael,kael:FindAbilityByName(vvv),"modifier_"..vvv.."_instance",nil)
+	end
+	kael.kael_ability = kael_ability
+	RemoveAbilityAndModifier(kael,'invoke')
+	RemoveAbilityAndModifier(kael,'forge_spirit')
+	RemoveAbilityAndModifier(kael,'invoker_ice_wall')
+	RemoveAbilityAndModifier(kael,'invoker_sun_strike')
+	RemoveAbilityAndModifier(kael,'invoker_chaos_meteor')
+	RemoveAbilityAndModifier(kael,'alacrity')
+	RemoveAbilityAndModifier(kael,'invoker_emp')
+	RemoveAbilityAndModifier(kael,'invoker_cold_snap')
+	RemoveAbilityAndModifier(kael,'invoker_tornado')
+	RemoveAbilityAndModifier(kael,'invoker_deafening_blast')
+	AddAbilityAndSetLevel(kael,kael_ability,a_level)
+	return kael_ability
+end
 --游戏循环2.3——自走！
 function ChessAI(u,force_delay)
 	if GameRules:GetGameModeEntity().start_ai == true and (u.aitimer == nil or Timers.timers[u.aitimer] == nil) then
@@ -11063,15 +11189,8 @@ function ChessAI(u,force_delay)
 		end
 		--kael
 		if u:FindAbilityByName('invoke') ~= nil then
-			local a_level = 1
-			if string.find(u:GetUnitName(),'1') then
-				a_level = 2
-			end
-			if string.find(u:GetUnitName(),'11') then
-				a_level = 3
-			end
-
 			local find_team = 0
+			local find_combo = nil
 			if GameRules:GetGameModeEntity().battle_boss[GameRules:GetGameModeEntity().battle_round-1] == nil then
 				if u.team_id == 4 then
 					find_team = u.at_team_id
@@ -11079,86 +11198,10 @@ function ChessAI(u,force_delay)
 					find_team = GameRules:GetGameModeEntity().counterpart[u.team_id]
 				end
 			end
-			local a_list = {
-				is_mage = 'invoker_emp',
-				is_shaman = 'invoker_emp',
-				is_god ='invoker_emp',
-				is_warrior = 'forge_spirit',
-				is_orc = 'forge_spirit',
-				is_goblin = 'forge_spirit',
-				is_warlock = 'alacrity',
-				is_mech = 'alacrity',
-				is_naga = 'alacrity',
-				is_hunter = 'invoker_deafening_blast',
-				is_assassin = 'invoker_deafening_blast',
-				is_troll = 'invoker_deafening_blast',
-				is_monk = 'invoker_deafening_blast',
-				is_knight = 'invoker_sun_strike',
-				is_human = 'invoker_sun_strike',
-				is_undead = 'invoker_sun_strike',
-				is_beast = 'invoker_chaos_meteor',
-				is_elf = 'invoker_chaos_meteor',
-				is_aqir = 'invoker_chaos_meteor',
-				is_druid = 'invoker_tornado',
-				is_element = 'invoker_tornado',
-				is_dragon = 'invoker_tornado',
-				is_pandaman = 'invoker_tornado',
-				is_tauren = 'invoker_tornado',
-			}
-			local aa_list = {
-				[1] = 'is_warrior',
-				[2] = 'is_mage',
-				[3] = 'is_knight',
-				[4] = 'is_warlock',
-				[5] = 'is_hunter',
-				[6] = 'is_mech',
-				[7] = 'is_assassin',
-				[8] = 'is_druid',
-				[9] = 'is_shaman',
-				[10] = 'is_god',
-				[11] = 'is_goblin',
-				[12] = 'is_orc',
-				[13] = 'is_naga',
-				[14] = 'is_troll',
-				[15] = 'is_human',
-				[16] = 'is_undead',
-				[17] = 'is_beast',
-				[18] = 'is_elf',
-				[19] = 'is_aqir',
-				[20] = 'is_element',
-				[21] = 'is_dragon',
-				[22] = 'is_tauren',
-				[23] = 'is_pandaman',
-				[24] = 'is_monk',
-			}
-			local kael_ability = a_list[aa_list[RandomInt(1,table.maxn(aa_list))]]
 			if find_team ~= 0 then
 				local find_combo = TeamId2Hero(find_team).kael_combo
-				if find_combo ~= nil and a_list[find_combo] ~= nil then
-					kael_ability = a_list[find_combo]
-				end
 			end
-			local orb_table = {
-				forge_spirit = {'invoker_exort','invoker_exort','invoker_quas'},
-				invoker_ice_wall = {'invoker_exort','invoker_quas','invoker_quas'},
-				invoker_sun_strike = {'invoker_exort','invoker_exort','invoker_exort'},
-				invoker_chaos_meteor = {'invoker_exort','invoker_exort','invoker_wex'},
-				alacrity = {'invoker_exort','invoker_wex','invoker_wex'},
-				invoker_emp = {'invoker_wex','invoker_wex','invoker_wex'},
-				invoker_cold_snap = {'invoker_quas','invoker_quas','invoker_quas'},
-				invoker_tornado = {'invoker_quas','invoker_wex','invoker_wex'},
-				invoker_deafening_blast = {'invoker_quas','invoker_wex','invoker_exort'},
-			}
-			AddAbilityAndSetLevel(u,'invoker_quas',a_level)
-			AddAbilityAndSetLevel(u,'invoker_wex',a_level)
-			AddAbilityAndSetLevel(u,'invoker_exort',a_level)
-			AddAbilityAndSetLevel(u,'invoker_invoke',a_level)
-			for iii,vvv in pairs(orb_table[kael_ability]) do
-				u:AddNewModifier(u,u:FindAbilityByName(vvv),"modifier_"..vvv.."_instance",nil)
-			end
-			u.kael_ability = kael_ability
-			RemoveAbilityAndModifier(u,'invoke')
-			AddAbilityAndSetLevel(u,kael_ability,a_level)
+			RefreshKaelOrbandAbility(u,find_combo)
 		end
 		if u:HasAbility('lc_qianggong') and string.find(u:GetUnitName(), '11') then
 			AddAbilityAndSetLevel(u,"legion_commander_moment_of_courage",3)
@@ -11237,9 +11280,9 @@ function ChessAI(u,force_delay)
 		--if u:HasAbility('phoenix_icarus_dive') then
 			--AddAbilityAndSetLevel(u,"phoenix_supernova",1)
 		--end
-		if u:HasAbility('invoker_deafening_blast') then
-			AddAbilityAndSetLevel(u,"special_bonus_unique_invoker_2",1)
-		end
+		-- if u:HasAbility('invoker_deafening_blast') then
+		-- 	AddAbilityAndSetLevel(u,"special_bonus_unique_invoker_2",1)
+		-- end
 		-----------------------------------------------------------------
 		-------------Personal-Test-End-----------------------------------
 		-----------------------------------------------------------------
@@ -11576,6 +11619,8 @@ function ChessAI(u,force_delay)
 				a = u.steal_ability
 			elseif string.find(u:GetUnitName(),'chess_kael') and u.kael_ability ~= nil then
 				a = u.kael_ability
+			elseif u.kael_ability_refresh == true then
+				a = RefreshKaelOrbandAbility(u)
 			else
 				a = GameRules:GetGameModeEntity().chess_ability_list[u:GetUnitName()] or GameRules:GetGameModeEntity().summon_ability_list[u:GetUnitName()]
 			end
@@ -16897,124 +16942,6 @@ function FindMohuaFriend(team_id, chessboard_id, p, exclude_entindex)
 	return luckydog
 end
 
-function TransformAMohuaChess(u)
-	if IsUnitExist(u) == false or IsHexxed(u) == true then
-		return
-	end
-	u:Stop()
-	local star = GetChessStar(u)
-	FillEmptySlot(u)
-	AddAbilityAndSetLevel(u,'jiaoxie')
-	RemoveAbilityAndModifier(u,'jiaoxie_wudi')
-	local has_demon_buff = false
-	if u:FindAbilityByName('is_demon_buff')~=nil then
-		has_demon_buff = true 
-	end
-
-	u:SetModelScale(0.5)
-	-- AddAbilityAndSetLevel(u,'no_hp_bar')
-
-	Timers:CreateTimer(0.1,function()
-		if IsUnitExist(u) == true then
-			local team_id = u:GetTeam()
-			local chessboard_id = u.at_team_id or u.team_id
-			local aposition = XY2Vector(u.x,u.y,chessboard_id) or u:GetAbsOrigin()
-
-			local items = GetAllItemsInUnits({[1] = u})
-			local hp_per = u:GetHealth()/u:GetMaxHealth()
-			RemoveFromToBeDestroyList(u)
-			if IsUnitExist(u) == true then
-				if u:FindAbilityByName('dr_shooter_aura') ~= nil then
-					RemoveDrShooterAura({
-						caster = u,
-						ability = u:FindAbilityByName('dr_shooter_aura'),
-					})
-				end
-
-				local forward_vector = u:GetForwardVector()
-				forward_vector.z = 0
-
-				if u:GetTeam() ~= 4 then
-					SaveItem(team_id,u:entindex(),function()
-						u:SetModelScale(0.0001)
-						if IsUnitExist(u) then
-							AddAbilityAndSetLevel(u,'no_hp_bar')
-							u.no_death_rattle = true
-							u:ForceKill(false)
-
-						end
-					end)
-				else
-					u:SetModelScale(0.0001)
-					if IsUnitExist(u) then
-						AddAbilityAndSetLevel(u,'no_hp_bar')
-						u.no_death_rattle = true
-						u:ForceKill(false)
-					end
-				end
-
-				
-				local x = SummonAChess(team_id,aposition,'chess_tb_mohua'..star,chessboard_id,100,0,items,true,forward_vector)
-				x:SetHealth(x:GetMaxHealth()*hp_per)
-				play_particle("particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
-
-				if has_demon_buff then
-					AddAbilityAndSetLevel(x,'is_demon_buff')
-				end
-
-				PlayParticleOnUnitUntilDeath({
-					caster = x,
-					p = "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf",
-				})
-			end
-		end
-	end)
-
-	
-
-	-- local mohua_model = {
-	-- 	[1] = "models/heroes/terrorblade/demon.vmdl",
-	-- 	[2] = "models/items/terrorblade/corrupted_form/corrupted_form.vmdl",
-	-- 	[3] = "models/items/terrorblade/endless_purgatory_demon/endless_purgatory_demon.vmdl",
-	-- }
-	-- local shift_model = mohua_model[level]
-
-	
-	-- local transfer_duration = RandomFloat(2.5,3)
-	-- u:FindAbilityByName("dac_guai_base"):ApplyDataDrivenModifier(u,u,'modifier_transfer_debuff',{ duration = transfer_duration})
-	
-	-- Timers:CreateTimer(transfer_duration,function()
-	-- 	if IsUnitExist(u) == true then
-	-- 		local aposition = u:GetAbsOrigin()
-	-- 		local team_id = u:GetTeam()
-	-- 		local at_team_id = u.at_team_id or u.team_id
-	-- 		local items = GetAllItemsInUnits({[1] = u})
-	-- 		local hp_per = u:GetHealth()/u:GetMaxHealth()
-	-- 		RemoveFromToBeDestroyList(u)
-	-- 		if IsUnitExist(u) == true then
-	-- 			if u:FindAbilityByName('dr_shooter_aura') ~= nil then
-	-- 				RemoveDrShooterAura({
-	-- 					caster = u,
-	-- 					ability = u:FindAbilityByName('dr_shooter_aura'),
-	-- 				})
-	-- 			end
-	-- 			if team_id ~= 4 then
-	-- 				SaveItem(u.team_id,u:entindex(),function()
-	-- 					u:Destroy()
-	-- 				end)
-	-- 			else
-	-- 				u:Destroy()
-	-- 			end
-	-- 			local x = SummonAChess(team_id,aposition,u.devolve_result,at_team_id,100,0,items,true)
-	-- 			x:SetHealth(x:GetMaxHealth()*hp_per)
-	-- 			EmitSoundOn("shaman.devolve",x)
-	-- 			play_particle("particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf",PATTACH_ABSORIGIN_FOLLOW,x,3)
-	-- 		end
-	-- 	end
-	-- end)
-end
-
-
 function VenoSummonWard(keys)
 	local ability = keys.ability
 	local caster = keys.caster
@@ -18426,8 +18353,8 @@ function MakeTiny(x)
 		x.SetSkin(1)
 	end
 
-	
 
+	
 end
 
 
@@ -23221,6 +23148,10 @@ function OnChessCastStart(u)
 		u.evolve_result_6 = RandomEvolveChess(u,2)
 		AddAbilityAndSetLevel(u,'evolve_immediate')
 	end
+	if string.find(u:GetUnitName(),'chess_kael') ~= nil then
+		u.kael_ability_refresh = true
+		u.kael_ability = nil
+	end
 end
 
 function PlayMultiCastParticle(keys)
@@ -27909,6 +27840,86 @@ function MakeSharkEffect()
 
 		local pp = ParticleManager:CreateParticle('effect/shayu/bose.vpcf', pos, shayu)
 		ParticleManager:SetParticleControlEnt( pp, 0, shayu, pos, nil, shayu:GetOrigin(), true );
+	end
+end
+
+function DKAttack(keys)
+	local caster = keys.caster
+    local target = keys.target
+    local ability = keys.ability
+    local level = ability:GetLevel()
+
+    local target_units = FindUnitsInRadiusByTeam({
+		team = caster:GetTeam(),
+		role = 2,
+		position = target:GetAbsOrigin(),
+		radius = 300,
+	})
+	for _,unit in pairs(target_units) do
+		--获取攻击伤害
+	    local attack_damage = keys.Damage
+	    local per = GetAbilityKV(ability,'splash_percent')
+	    local damage = attack_damage*per/100
+	    local damageTable = {
+	    	victim=unit,
+	    	attacker=caster,
+	    	damage_type=DAMAGE_TYPE_PURE,
+	    	damage=damage
+	    }
+	    ApplyDamage(damageTable)
+	    if level >= 2 then
+	    	local per_slow = GetAbilityKV(ability,'slow_percent')
+	    	ability:ApplyDataDrivenModifier(caster,unit,'modifier_dk_slow',{})
+		end
+		if level >= 3 then
+			local per_slow = GetAbilityKV(ability,'poison_percent')
+	    	ability:ApplyDataDrivenModifier(caster,unit,'modifier_dk_poison',{})
+		end
+	end
+end
+
+function DragonForm(keys)
+	local ability = keys.ability
+	local caster = keys.caster
+	local level = ability:GetLevel() or 1
+	local particle_list = {
+		[1] = 'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red.vpcf',
+		[2] = 'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf',
+		[3] = 'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_black.vpcf',
+	}
+	local name_list = {
+		[1] = 'chess_dk_dragon',
+		[2] = 'chess_dk1_dragon',
+		[3] = 'chess_dk11_dragon',
+	}
+
+	local team_id = caster:GetTeam()
+	local at_team_id = caster.at_team_id or caster.team_id
+
+	TransformAChess(caster,name_list[level],true,function(x)
+		if IsUnitExist(x) then
+			AddAbilityAndSetLevel(x,"dk_dragon_attack",level)
+			EmitSoundOn("Hero_DragonKnight.ElderDragonForm",x)
+			play_particle(particle_list[level],PATTACH_ABSORIGIN_FOLLOW,x,3)
+		end
+	end)
+end
+
+function DkPoisonDamage(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local max_hp = caster:GetMaxHealth()
+	local ability = keys.ability
+	local damage_per = GetAbilityKV(ability, "poison_percent") or 5
+	local damage = max_hp/100.0*damage_per
+
+	if keys.target:IsMagicImmune() == false then
+	    ApplyDamage({
+	    	victim = target,
+	    	attacker = caster,
+	    	damage_type = DAMAGE_TYPE_MAGICAL,
+	    	damage = damage
+	    })
 	end
 end
 ----------------------------------------------------------------------------------

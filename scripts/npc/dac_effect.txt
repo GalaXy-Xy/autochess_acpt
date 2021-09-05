@@ -2015,7 +2015,26 @@
 			}
 		}
 	}
-	
+	"e326"
+	{
+		"BaseClass"		"ability_datadriven"
+		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"precache"
+		{
+			"particle"	"particles/econ/events/ti10/hot_potato/disco_ball_channel.vpcf"
+		}
+		"Modifiers"
+		{
+			"modifier_texiao_star"
+			{
+				"Passive"	"1"
+				"EffectName"	"particles/econ/events/ti10/hot_potato/disco_ball_channel.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"IsHidden"	"1"
+			}
+		}
+	}
 	// =================================================================================================================
 	// 特效测试：900起
 	// =================================================================================================================

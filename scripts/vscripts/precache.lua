@@ -284,6 +284,7 @@ return {
 	"models/xuezhe/xuezhe.vmdl",
 	"models/xiaochou/xiaochou.vmdl",
 	"models/items/courier/owl_courier/owl_courier.vmdl",
+	"models/shayu/shayu.vmdl",
 
 
 
