@@ -20635,11 +20635,13 @@
 		"Ability16"	"dac_guai_base"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"AttackDamageMin"	"100"
-		"AttackDamageMax"	"100"
+		"AttackDamageMin"	"280"
+		"AttackDamageMax"	"290"
 		"AttackRate"	"1.4"
 		"AttackRange"	"600"
-		"Creature"	{}
+		"Creature"
+		{
+		}
 		"ProjectileModel"	"effect/dragon/baseattack/2.vpcf"
 		"ProjectileSpeed"	"3000"
 		"AttackAnimationPoint"	"0.5"
@@ -20865,13 +20867,16 @@
 		"Ability16"	"dac_guai_base"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"AttackDamageMin"	"100"
-		"AttackDamageMax"	"100"
+		"AttackDamageMin"	"360"
+		"AttackDamageMax"	"380"
 		"AttackRate"	"1.4"
 		"AttackRange"	"600"
 		"Creature"
 		{
-			"AttachWearables"	{}
+			"AttachWearables"
+			{
+
+			}
 		}
 		"ProjectileModel"	"effect/dragon/baseattack/3.vpcf"
 		"ProjectileSpeed"	"3000"
@@ -21098,11 +21103,13 @@
 		"Ability16"	"dac_guai_base"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"AttackDamageMin"	"100"
-		"AttackDamageMax"	"100"
+		"AttackDamageMin"	"520"
+		"AttackDamageMax"	"560"
 		"AttackRate"	"1.4"
 		"AttackRange"	"600"
-		"Creature"	{}
+		"Creature"
+		{
+		}
 		"ProjectileModel"	"effect/dragon/baseattack/4/attack_black.vpcf"
 		"ProjectileSpeed"	"3000"
 		"AttackAnimationPoint"	"0.5"

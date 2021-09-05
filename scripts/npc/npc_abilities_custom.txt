@@ -1960,6 +1960,7 @@
 				"States"
 				{
 					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"IsHidden"	"1"
 			}
@@ -17131,6 +17132,7 @@
 			}
 		}
 	}
+
 	// --------Personal-Test-Begin------------------------------------------------
 	"crystal_maiden_freezing_field"
 	{
