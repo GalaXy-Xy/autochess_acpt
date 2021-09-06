@@ -1307,10 +1307,10 @@ function DAC:InitGameMode()
 	--黑暗机械核心可以开出的小黑屋棋子（不受本局橙卡池影响）
 	GameRules:GetGameModeEntity().chess_list_by_mana_black = {
 		[1] = {'chess_bh','chess_vs','chess_tusk'},
-		[2] = {'chess_bs','chess_lion'},
-		[3] = {'chess_pa','chess_ok'}, 
-		[4] = {'chess_dk','chess_na'},
-		[5] = {'chess_lich','chess_dp','chess_sven'}
+		[2] = {'chess_bs','chess_lion','chess_visage'},
+		[3] = {'chess_pa','chess_ok','chess_lyc'}, 
+		[4] = {'chess_lich','chess_na'},
+		[5] = {'chess_dp','chess_sven'}
 	}
 	--德鲁伊棋子列表（不受本局橙卡池影响）
 	GameRules:GetGameModeEntity().chess_list_by_druid = {
@@ -2048,6 +2048,7 @@ function DAC:InitGameMode()
 			invoker_ice_wall = 2,
 			invoker_sun_strike = 25,
 			invoker_chaos_meteor = 3,
+			chaos_meteor_datadriven = 3,
 			alacrity = 7,
 			invoker_emp = 3,
 			invoker_cold_snap = 22,
@@ -2220,7 +2221,7 @@ function DAC:InitGameMode()
 		is_troll11 = { ability = 'troll_rexuezhanhun', condition = 6, type = 2, is_race = true },
 		is_beast = { ability = 'is_beast_buff', condition = 2, type = 2, is_race = true },
 		is_beast1 = { ability = 'is_beast_buff_plus', condition = 4, type = 2, is_race = true },
-		is_beast11 = { ability = 'ursa_fury_swipes', condition = 6, type = 2, is_race = true },
+		is_beast11 = { ability = 'is_beast_buff_plus_plus', condition = 6, type = 2, is_race = true },
 		is_elf = { ability = 'is_elf_buff', condition = 3, type = 1, is_race = true },
 		is_elf1 = { ability = 'is_elf_buff_plus', condition = 6, type = 2, is_race = true },
 		is_elf11 = { ability = 'is_elf_buff_plus_plus', condition = 9, type = 2, is_race = true },
@@ -4899,9 +4900,9 @@ function StartAPrepareRound()
 					AddItemPlus(v,'item_zhishizhishu')
 					EmitSoundOn("is_human.magic",hero)
 				end
-				-- if GetHumanCount(v:GetTeam()) >= 6 then
-				-- 	AddItemPlus(v,'item_zhishizhishu')
-				-- end
+				if GetHumanCount(v:GetTeam()) >= 6 then
+					AddItemPlus(v,'item_zhishizhishu')
+				end
 			end
 		end
 	end)
@@ -8727,7 +8728,7 @@ function HoorayAndMechHuman(team)
 	--人类思想火花
 	if table.maxn(alive_human) >= 1 and human_level == 2 then
 		AddItemPlus(hero,'item_zhishizhishu')
-		AddItemPlus(hero,'item_zhishizhishu')
+		-- AddItemPlus(hero,'item_zhishizhishu')
 		for _,unit in pairs(alive_human) do
 			play_particle("particles/units/heroes/hero_wisp/wisp_death.vpcf",PATTACH_ABSORIGIN_FOLLOW,unit,2)
 		end
@@ -10964,25 +10965,25 @@ function RefreshKaelOrbandAbility(kael,find_combo)
         is_assassin = 'invoker_deafening_blast',
         is_mage = 'invoker_emp',
         is_hunter = 'invoker_deafening_blast',
-        is_elf = 'invoker_chaos_meteor',
+        is_elf = 'chaos_meteor_datadriven',
         is_warlock = 'alacrity',
         is_troll = 'invoker_deafening_blast',
-        is_beast = 'invoker_chaos_meteor',
+        is_beast = 'chaos_meteor_datadriven',
         is_human = 'invoker_sun_strike',
-        is_undead = 'invoker_chaos_meteor',
+        is_undead = 'chaos_meteor_datadriven',
         is_orc = 'forge_spirit',
         is_goblin = 'forge_spirit',
         is_mech = 'invoker_sun_strike',
         is_knight = 'invoker_sun_strike',
         is_dragon = 'invoker_tornado',
         is_shaman = 'invoker_tornado',
-        is_druid = 'invoker_chaos_meteor',
+        is_druid = 'chaos_meteor_datadriven',
         is_wizard = 'alacrity',
         is_naga = 'alacrity',
         is_element = 'forge_spirit',
         is_god = 'invoker_emp',
         is_pandaman = 'invoker_emp',
-        is_aqir = 'invoker_chaos_meteor',
+        is_aqir = 'chaos_meteor_datadriven',
         is_priest = 'invoker_sun_strike',
         is_dwarf = 'invoker_deafening_blast',
         is_demonhunter = 'invoker_deafening_blast',
@@ -10990,7 +10991,7 @@ function RefreshKaelOrbandAbility(kael,find_combo)
         is_demon = 'invoker_sun_strike',
         is_monk = 'invoker_tornado',
         is_tauren = 'alacrity',
-        is_kobold = 'invoker_chaos_meteor',
+        is_kobold = 'chaos_meteor_datadriven',
         is_nraqi = 'invoker_sun_strike',
         is_satyr = 'invoker_tornado',
 	}
@@ -11030,6 +11031,11 @@ function RefreshKaelOrbandAbility(kael,find_combo)
         [33] = 'is_satyr',
 	}
 	local kael_ability = a_list[aa_list[RandomInt(1,table.maxn(aa_list))]]
+	local try_count = 100
+	while kael.kael_ability == kael_ability and try_count < 100 do
+		try_count = try_count + 1
+		kael_ability = a_list[aa_list[RandomInt(1,table.maxn(aa_list))]]
+	end
 	if find_combo ~= nil and a_list[find_combo] ~= nil then
 		kael_ability = a_list[find_combo]
 	end
@@ -11037,7 +11043,7 @@ function RefreshKaelOrbandAbility(kael,find_combo)
 		forge_spirit = {'invoker_exort','invoker_exort','invoker_quas'},
 		invoker_ice_wall = {'invoker_exort','invoker_quas','invoker_quas'},
 		invoker_sun_strike = {'invoker_exort','invoker_exort','invoker_exort'},
-		invoker_chaos_meteor = {'invoker_exort','invoker_exort','invoker_wex'},
+		chaos_meteor_datadriven = {'invoker_exort','invoker_exort','invoker_wex'},
 		alacrity = {'invoker_exort','invoker_wex','invoker_wex'},
 		invoker_emp = {'invoker_wex','invoker_wex','invoker_wex'},
 		invoker_cold_snap = {'invoker_quas','invoker_quas','invoker_quas'},
@@ -11048,24 +11054,23 @@ function RefreshKaelOrbandAbility(kael,find_combo)
 	AddAbilityAndSetLevel(kael,'invoker_wex',a_level)
 	AddAbilityAndSetLevel(kael,'invoker_exort',a_level)
 	AddAbilityAndSetLevel(kael,'invoker_invoke',a_level)
-	RemoveAbilityAndModifier(kael,"modifier_invoker_wex_instance")
-	RemoveAbilityAndModifier(kael,"modifier_invoker_quas_instance")
-	RemoveAbilityAndModifier(kael,"modifier_invoker_exort_instance")
 	play_particle("particles/units/heroes/hero_invoker/invoker_invoke.vpcf",PATTACH_ABSORIGIN_FOLLOW,kael,3)
 	for iii,vvv in pairs(orb_table[kael_ability]) do
 		kael:AddNewModifier(kael,kael:FindAbilityByName(vvv),"modifier_"..vvv.."_instance",nil)
 	end
 	kael.kael_ability = kael_ability
-	RemoveAbilityAndModifier(kael,'invoke')
-	RemoveAbilityAndModifier(kael,'forge_spirit')
-	RemoveAbilityAndModifier(kael,'invoker_ice_wall')
-	RemoveAbilityAndModifier(kael,'invoker_sun_strike')
-	RemoveAbilityAndModifier(kael,'invoker_chaos_meteor')
-	RemoveAbilityAndModifier(kael,'alacrity')
-	RemoveAbilityAndModifier(kael,'invoker_emp')
-	RemoveAbilityAndModifier(kael,'invoker_cold_snap')
-	RemoveAbilityAndModifier(kael,'invoker_tornado')
-	RemoveAbilityAndModifier(kael,'invoker_deafening_blast')
+
+	kael:RemoveAbility('invoke')
+	kael:RemoveAbility('forge_spirit')
+	kael:RemoveAbility('invoker_ice_wall')
+	kael:RemoveAbility('invoker_sun_strike')
+	kael:RemoveAbility('chaos_meteor_datadriven')
+	kael:RemoveAbility('alacrity')
+	kael:RemoveAbility('invoker_emp')
+	kael:RemoveAbility('invoker_cold_snap')
+	kael:RemoveAbility('invoker_tornado')
+	kael:RemoveAbility('invoker_deafening_blast')
+
 	AddAbilityAndSetLevel(kael,kael_ability,a_level)
 	return kael_ability
 end
@@ -12629,7 +12634,7 @@ function ChessAI(u,force_delay)
 								 		Queue = 0 --Optional.  Used for queueing up abilities
 								 	})
 								end
-							elseif a == "invoker_chaos_meteor" then
+							elseif a == "chaos_meteor_datadriven" then
 								--陨石
 								local tt = FindFarthestGridForAbility(u,a)
 								local target_enemy = tt['target_enemy']
@@ -16924,7 +16929,6 @@ function TbMohuaNew(keys)
 			end
 		end)
 	end
-	
 end
 
 function FindMohuaFriend(team_id, chessboard_id, p, exclude_entindex)
@@ -16986,8 +16990,8 @@ function ExtendBeastBuff(unit,owner)
 	if owner:FindAbilityByName('is_beast_buff_plus')~=nil then
 		AddAbilityAndSetLevel(unit,'is_beast_buff_plus')
 	end
-	if owner:FindAbilityByName('ursa_fury_swipes')~=nil then
-		AddAbilityAndSetLevel(unit,'ursa_fury_swipes')
+	if owner:FindAbilityByName('is_beast_buff_plus_plus')~=nil then
+		AddAbilityAndSetLevel(unit,'is_beast_buff_plus_plus')
 	end
 
 	if owner:FindModifierByName('modifier_item_zhaohuanshenshi') ~= nil or owner:FindModifierByName('modifier_item_minglingshu') ~= nil then
@@ -23622,6 +23626,7 @@ function DAC:DamageFilter(keys)
 	    keys.damage = 0
 	    return false
 	end
+
 	if keys.entindex_inflictor_const ~= nil and keys.entindex_inflictor_const > 0 and keys.damage > 10 then
 		--巨魔战将，斧子锁定为物理伤害
 		local ability = EntIndexToHScript(keys.entindex_inflictor_const)
@@ -23698,6 +23703,10 @@ function DAC:DamageFilter(keys)
 			local distance = (a:GetAbsOrigin() - v:GetAbsOrigin()):Length2D()
 			local damage_bouns_per = distance/128.0*10
 			keys.damage = keys.damage * (100 + damage_bouns_per) / 100
+		end
+		if v:FindModifierByName('modifier_is_beast_debuff_plus_plus') ~= nil then
+			local count = v:FindModifierByName('modifier_is_beast_debuff_plus_plus'):GetStackCount()
+			keys.damage = keys.damage*(1+count*5/100)
 		end
 	end
 
@@ -25110,6 +25119,20 @@ function Bangjidadi(keys)
 	end
 end
 
+function Add6BeastDebuff(keys)
+	local ability = keys.ability
+	local caster = keys.caster
+	local target = keys.target
+	if IsUnitExist(target) and IsUnitExist(caster) then
+		if target:FindModifierByName('modifier_is_beast_debuff_plus_plus') ~= nil then
+			local count = target:FindModifierByName('modifier_is_beast_debuff_plus_plus'):GetStackCount()
+			target:FindModifierByName('modifier_is_beast_debuff_plus_plus'):SetStackCount(count+1)
+		else
+			ability:ApplyDataDrivenModifier(caster,target,'modifier_is_beast_debuff_plus_plus',{})
+			target:FindModifierByName('modifier_is_beast_debuff_plus_plus'):SetStackCount(1)
+		end
+	end
+end
 --土猫：巨石翻滚
 function EarthStartRockRoll(keys)
 	local caster = keys.caster
@@ -27908,7 +27931,7 @@ end
 function DkPoisonDamage(keys)
 	local caster = keys.caster
 	local target = keys.target
-	local max_hp = caster:GetMaxHealth()
+	local max_hp = target:GetMaxHealth()
 	local ability = keys.ability
 	local damage_per = GetAbilityKV(ability, "poison_percent") or 5
 	local damage = max_hp/100.0*damage_per

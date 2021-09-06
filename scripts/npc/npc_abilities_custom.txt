@@ -3314,26 +3314,40 @@
 		"AbilityTextureName"	"beastmaster_greater_boar_poison"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"precache"
 		{
+			"particle"	"particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf"
 			"particle"	"effect/beast/1.vpcf"
 		}
 		"Modifiers"
 		{
-			"modifier_is_beast_buff_plus_plus"
+			"modifier_is_beast_debuff_plus_plus"
 			{
 				"TextureName"	"beastmaster_greater_boar_poison"
-				"IsDebuff"	"0"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"40"
-				}
-				"IsBuff"	"1"
+				"IsDebuff"	"1"
+				"Properties"	{}
+				"IsBuff"	"0"
 				"States"	{}
+				"Passive"	"0"
+				"EffectName"	"particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf"
+				"EffectAttachType"	"follow_overhead"
+			}
+			"modifier_is_beast_buff_plus_plus"
+			{
+				"IsBuff"	"1"
 				"Passive"	"1"
 				"EffectName"	"effect/beast/1.vpcf"
 				"EffectAttachType"	"follow_overhead"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
+						"Function"	"Add6BeastDebuff"
+					}
+				}
 			}
 		}
 	}
@@ -12145,6 +12159,177 @@
 				"levelkey"	"wexlevel"
 			}
 		}
+	}
+
+	"chaos_meteor_datadriven"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"invoker_chaos_meteor"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		"MaxLevel"	"3"
+		"AbilityCastPoint"	"0"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_CHAOS_METEOR"
+		"AbilityCooldown"	"15 12 9"
+		"AbilityManaCost"	"100"
+		"AbilityCastRange"	"9999"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_invoker/invoker_chaos_meteor.vpcf"
+			"particle"	"particles/units/heroes/hero_invoker/invoker_chaos_meteor_fly.vpcf"
+			"particle"	"particles/units/heroes/hero_invoker/invoker_chaos_meteor_burn_debuff.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/hero_invoker/chaos_meteor.lua"
+				"Function"	"invoker_chaos_meteor_datadriven_on_spell_start"
+				"Target"	"POINT"
+				"LandTime"	"%land_time"
+				"TravelSpeed"	"%travel_speed"
+				"VisionDistance"	"%vision_distance"
+				"EndVisionDuration"	"%end_vision_duration"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_invoker_chaos_meteor_datadriven_unit_ability"
+			{
+				"Passive"	"0"
+				"IsHidden"	"0"
+				"IsBuff"	"0"
+				"IsDebuff"	"0"
+				"IsPurgable"	"0"
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_MOVE_TO"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			"modifier_invoker_chaos_meteor_datadriven_main_damage"
+			{
+				"Passive"	"0"
+				"IsHidden"	"1"
+				"IsBuff"	"0"
+				"IsDebuff"	"0"
+				"IsPurgable"	"0"
+				"ThinkInterval"	"%damage_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/hero_invoker/chaos_meteor.lua"
+						"Function"	"modifier_invoker_chaos_meteor_datadriven_main_damage_on_interval_think"
+						"AreaOfEffect"	"%area_of_effect"
+						"BurnDuration"	"%burn_duration"
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/hero_invoker/chaos_meteor.lua"
+						"Function"	"modifier_invoker_chaos_meteor_datadriven_main_damage_on_interval_think"
+						"AreaOfEffect"	"%area_of_effect"
+					}
+				}
+			}
+			"modifier_invoker_chaos_meteor_datadriven_burn_damage"
+			{
+				"Duration"	"%burn_duration"
+				"Passive"	"0"
+				"IsHidden"	"0"
+				"IsBuff"	"0"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"ThinkInterval"	"%burn_dps_inverval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/hero_invoker/chaos_meteor.lua"
+						"Function"	"modifier_invoker_chaos_meteor_datadriven_burn_damage_on_interval_think"
+						"BurnDPSInterval"	"%burn_dps_inverval"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"land_time"	"1.3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"area_of_effect"	"200"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"travel_distance"	"400 600 800"
+				"levelkey"	"wexlevel"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"travel_speed"	"300"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_interval"	"0.5"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"vision_distance"	"500"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"end_vision_duration"	"3.0"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"main_damage"	"120 160 240"
+				"levelkey"	"exortlevel"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"burn_duration"	"3.0 4.0 5.0"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"burn_dps"	"60 80 100"
+				"levelkey"	"exortlevel"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"burn_dps_inverval"	"1"
+			}
+		}
+		// Mainly about damage
+		"AbilityModifierSupportValue"	"0.0"
 	}
 
 	"invoker_chaos_meteor"

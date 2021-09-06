@@ -20635,8 +20635,8 @@
 		"Ability16"	"dac_guai_base"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"AttackDamageMin"	"280"
-		"AttackDamageMax"	"290"
+		"AttackDamageMin"	"220"
+		"AttackDamageMax"	"230"
 		"AttackRate"	"1.4"
 		"AttackRange"	"600"
 		"Creature"
@@ -20867,8 +20867,8 @@
 		"Ability16"	"dac_guai_base"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"AttackDamageMin"	"360"
-		"AttackDamageMax"	"380"
+		"AttackDamageMin"	"370"
+		"AttackDamageMax"	"390"
 		"AttackRate"	"1.4"
 		"AttackRange"	"600"
 		"Creature"
@@ -21103,8 +21103,8 @@
 		"Ability16"	"dac_guai_base"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"AttackDamageMin"	"520"
-		"AttackDamageMax"	"560"
+		"AttackDamageMin"	"600"
+		"AttackDamageMax"	"640"
 		"AttackRate"	"1.4"
 		"AttackRange"	"600"
 		"Creature"
@@ -32333,7 +32333,7 @@
 		// Base mana.
 		"StatusMana"	"100"
 		// Mana regeneration rate.
-		"StatusManaRegen"	"10"
+		"StatusManaRegen"	"8"
 		// Team
 		// ----------------------------------------------------------------
 		// Team name.
