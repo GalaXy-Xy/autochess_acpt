@@ -5562,6 +5562,13 @@ function DAC:OnEntityKilled(keys)
 	if u:GetUnitName() == "mango_tree" then
 		return
 	end
+
+	--龙骑士的龙阵亡，变换模型（因为龙模型没有死亡动画）
+	if u:GetUnitName() == "chess_dk_dragon" or u:GetUnitName() == "chess_dk1_dragon" or u:GetUnitName() == "chess_dk11_dragon" then
+		u:SetOriginalModel("models/heroes/dragon_knight/dragon_knight.vmdl")
+		u:SetModel("models/heroes/dragon_knight/dragon_knight.vmdl")
+	end
+
 	RemoveInvisibleUnitTable(u)
 	if u.no_death_rattle then
 		return
@@ -10832,6 +10839,7 @@ function LoadOneCloudChess(vi,team)
 	end)
 end
 
+--棋子变身（通用）
 function TransformAChess(u,new_chess_name,item_inherited,cb)
 	if u.transforming == true then
 		return
@@ -10846,6 +10854,7 @@ function TransformAChess(u,new_chess_name,item_inherited,cb)
 	RemoveAbilityAndModifier(u,'jiaoxie_wudi')
 
 	u:SetModelScale(0.5)
+	local combo_ability_table = GetAllComboModifierAbilityByChess(u) or {}
 
 	Timers:CreateTimer(0.1,function()
 		if IsUnitExist(u) == true then
@@ -10853,7 +10862,7 @@ function TransformAChess(u,new_chess_name,item_inherited,cb)
 			local chessboard_id = u.at_team_id or u.team_id
 			local aposition = XY2Vector(u.x,u.y,chessboard_id) or u:GetAbsOrigin()
 
-			local items = GetAllItemsInUnits({[1] = u})
+			local items = GetAllItemsAndCDInUnits({[1] = u})
 			local hp_per = u:GetHealth()/u:GetMaxHealth()
 			RemoveFromToBeDestroyList(u)
 			if IsUnitExist(u) == true then
@@ -10890,6 +10899,12 @@ function TransformAChess(u,new_chess_name,item_inherited,cb)
 				end
 				local x = SummonAChess(team_id,aposition,new_chess_name,chessboard_id,100,0,items,true,forward_vector)
 				x:SetHealth(x:GetMaxHealth()*hp_per)
+
+				--继承combo技能
+				for _,a in pairs(combo_ability_table) do
+					AddAbilityAndSetLevel(x,a)
+				end
+
 				if cb then
 					cb(x)
 				end
@@ -11031,14 +11046,15 @@ function RefreshKaelOrbandAbility(kael,find_combo)
         [33] = 'is_satyr',
 	}
 	local kael_ability = a_list[aa_list[RandomInt(1,table.maxn(aa_list))]]
-	local try_count = 100
-	while kael.kael_ability == kael_ability and try_count < 100 do
-		try_count = try_count + 1
-		kael_ability = a_list[aa_list[RandomInt(1,table.maxn(aa_list))]]
-	end
+	local try_count = 0
 	if find_combo ~= nil and a_list[find_combo] ~= nil then
 		kael_ability = a_list[find_combo]
 	end
+	while kael.kael_ability_last ~= nil and kael.kael_ability_last == kael_ability and try_count < 100 do
+		try_count = try_count + 1
+		kael_ability = a_list[aa_list[RandomInt(1,table.maxn(aa_list))]]
+	end
+	
 	local orb_table = {
 		forge_spirit = {'invoker_exort','invoker_exort','invoker_quas'},
 		invoker_ice_wall = {'invoker_exort','invoker_quas','invoker_quas'},
@@ -11072,6 +11088,8 @@ function RefreshKaelOrbandAbility(kael,find_combo)
 	kael:RemoveAbility('invoker_deafening_blast')
 
 	AddAbilityAndSetLevel(kael,kael_ability,a_level)
+
+	kael.kael_ability_refresh = nil
 	return kael_ability
 end
 --游戏循环2.3——自走！
@@ -11618,14 +11636,16 @@ function ChessAI(u,force_delay)
 					return refresh_result + ai_delay
 				end
 			end
+			if u.kael_ability_refresh == true then
+				RefreshKaelOrbandAbility(u)
+				return 0.5 + ai_delay
+			end
 			--释放技能：14可以重新分配，原来的pom，11=新沙王，0=被动技能，1=单位目标，2=无目标，3=点目标，4=自己目标，5=近身单位目标，6=先知在地图边缘招树人，7=随机友军目标（嗜血术），8=随机周围空地目标（炸弹人），9=血量百分比最低的队友，10=等级最高的敌人（末日）12=小小投掷身边的敌人到最远的格子，13=自己为中心的点目标
 			local a = nil
 			if string.find(u:GetUnitName(),'chess_rubick') and u.steal_ability ~= nil then
 				a = u.steal_ability
 			elseif string.find(u:GetUnitName(),'chess_kael') and u.kael_ability ~= nil then
 				a = u.kael_ability
-			elseif u.kael_ability_refresh == true then
-				a = RefreshKaelOrbandAbility(u)
 			else
 				a = GameRules:GetGameModeEntity().chess_ability_list[u:GetUnitName()] or GameRules:GetGameModeEntity().summon_ability_list[u:GetUnitName()]
 			end
@@ -16732,52 +16752,26 @@ function LycSummonWolf(keys)
 	play_particle("particles/units/heroes/hero_lycan/lycan_shapeshift_cast.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,3)
 	EmitSoundOn("Hero_Lycan.Shapeshift.Cast",caster)
 
-	local lyc_model = {
-		[1] = "models/items/lycan/ultimate/ambry_true_form/ambry_true_form.vmdl",
-		[2] = "models/items/lycan/ultimate/alpha_trueform9/alpha_trueform9.vmdl",
-		[3] = "models/items/lycan/ultimate/_ascension_of_the_hallowed_beast_form/_ascension_of_the_hallowed_beast_form.vmdl",
-		-- [3] = "models/items/lycan/ultimate/blood_moon_hunter_shapeshift_form/blood_moon_hunter_shapeshift_form.vmdl",
+	local name_list = {
+		[1] = 'chess_lyc_wolf',
+		[2] = 'chess_lyc1_wolf',
+		[3] = 'chess_lyc11_wolf',
 	}
-	local shift_model = lyc_model[level]
-	if shift_model ~= nil then
-		--拉比克变身去除饰品
-		if string.find(caster:GetUnitName(),'chess_rubick') then
-			local children = caster:GetChildren()
-		    for k,child in pairs(children) do
-		       if child:GetClassname() == "dota_item_wearable" then
-		           child:RemoveSelf()
-		       end
-		    end
-		end
 
-		caster:SetOriginalModel(shift_model)
-		caster:SetModel(shift_model)
-		ModMaxHP({
-			caster = caster,
-			per = hp_per,
-			is_heal = true,
-		})
-		caster.is_shifted = true
-	end
+	TransformAChess(caster,name_list[level],true,function(x)
+		if IsUnitExist(x) then
+			ModMaxHP({
+				caster = x,
+				per = hp_per,
+				is_heal = true,
+			})
+			x.is_shifted = true
+			
+		end
+	end)
 
 	SummonMinion(caster,'lyc_wolf'..level,({2,2,3})[level])
 
-	-- Timers:CreateTimer(0.1,function()
-	-- 	local w = SummonOneMinion(caster,'lyc_wolf'..level)
-	-- 	ExtendBeastBuff(w,caster)
-
-	-- 	Timers:CreateTimer(0.1,function()
-	-- 		local w = SummonOneMinion(caster,'lyc_wolf'..level)
-	-- 		ExtendBeastBuff(w,caster)
-
-	-- 		if level == 3 then
-	-- 			Timers:CreateTimer(0.1,function()
-	-- 				local w = SummonOneMinion(caster,'lyc_wolf'..level)
-	-- 				ExtendBeastBuff(w,caster)
-	-- 			end)
-	-- 		end
-	-- 	end)
-	-- end)
 end
 function VisageSummonBabyDragon(keys)
 	local ability = keys.ability
@@ -19409,13 +19403,73 @@ function GetAllItemsInUnits(units)
 	end
 	return items_table
 end
+
+--收集多个棋子的装备
+function GetAllItemsAndCDInUnits(units)
+	--收集棋子的物品
+	local items_table = {}
+	for _,vv in pairs(units) do
+		if IsUnitExist(vv) == true then
+			--记录装备情况
+			for slot=0,9 do
+				if vv:GetItemInSlot(slot)~= nil then
+					local item = vv:GetItemInSlot(slot)
+					local name = item:GetAbilityName()
+					local charges = item:GetCurrentCharges()
+					local cd = item:GetCooldownTimeRemaining()
+					-- if item:IsPermanent() == false then
+					-- 	--消耗品： 丢出来
+					-- 	for i=1,charges do
+					-- 		local newItem = CreateItem( name, vv, vv )
+					-- 		local drop = CreateItemOnPositionForLaunch(vv:GetAbsOrigin(), newItem )
+					-- 		local dropRadius = RandomFloat( 50, 200 )
+					-- 		newItem:LaunchLootInitialHeight( false, 0, 200, 0.75, vv:GetAbsOrigin() + RandomVector(dropRadius ))
+					-- 	end
+					-- else
+						local item_name = vv:GetItemInSlot(slot):GetAbilityName()
+
+						if item_name == 'item_silingshu_2' or item_name == 'item_silingshu_3' then
+							item_name = 'item_silingshu'
+						end
+
+						if item_name ~= 'item_null' then
+							table.insert(items_table,{
+								item = item_name,
+								charges = charges,
+								cd = cd,
+							})
+						end
+					-- end
+				end
+			end
+		end
+	end
+	return items_table
+end
+
 --把装备给棋子
 function GiveItems2Unit(items,unit)
 	for _,v in pairs(items) do
-		if v == 'item_silingshu' or v == 'item_silingshu_2' or v == 'item_silingshu_3' then
-			v = GetCurrSilingshuItemName(unit)
+		local item_name = v.item or v
+		local charges = v.charges or 1
+		local cd = v.cd or 0
+		if item_name == 'item_silingshu' or item_name == 'item_silingshu_2' or item_name == 'item_silingshu_3' then
+			item_name = GetCurrSilingshuItemName(unit)
 		end
-		unit:AddItemByName(v)
+		
+		unit:AddItemByName(item_name)
+
+		for slot=0,8 do
+			if unit:GetItemInSlot(slot)~= nil then
+				local i = unit:GetItemInSlot(slot)
+				local n = i:GetAbilityName()
+				if item_name == n then
+					if cd > 0 then
+						i:StartCooldown(cd)
+					end
+				end
+			end
+		end
 	end
 end
 
@@ -23154,6 +23208,7 @@ function OnChessCastStart(u)
 	end
 	if string.find(u:GetUnitName(),'chess_kael') ~= nil then
 		u.kael_ability_refresh = true
+		u.kael_ability_last = u.kael_ability
 		u.kael_ability = nil
 	end
 end
@@ -27415,9 +27470,9 @@ function IsChessCanUseItem(chess)
 	if IsHexxed(chess) == true then
 		return false
 	end
-	if string.find(chess:GetUnitName(),'chess_tb_mohua') ~= nil then
-		return false
-	end
+	-- if string.find(chess:GetUnitName(),'chess_tb_mohua') ~= nil then
+	-- 	return false
+	-- end
 	return true
 end
 
@@ -27907,8 +27962,8 @@ function DragonForm(keys)
 	local level = ability:GetLevel() or 1
 	local particle_list = {
 		[1] = 'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red.vpcf',
-		[2] = 'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf',
-		[3] = 'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_black.vpcf',
+		[2] = 'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red.vpcf',
+		[3] = 'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red.vpcf',
 	}
 	local name_list = {
 		[1] = 'chess_dk_dragon',
@@ -27918,12 +27973,13 @@ function DragonForm(keys)
 
 	local team_id = caster:GetTeam()
 	local at_team_id = caster.at_team_id or caster.team_id
+	play_particle(particle_list[level],PATTACH_ABSORIGIN_FOLLOW,caster,3)
 
 	TransformAChess(caster,name_list[level],true,function(x)
 		if IsUnitExist(x) then
 			AddAbilityAndSetLevel(x,"dk_dragon_attack",level)
 			EmitSoundOn("Hero_DragonKnight.ElderDragonForm",x)
-			play_particle(particle_list[level],PATTACH_ABSORIGIN_FOLLOW,x,3)
+			
 		end
 	end)
 end
@@ -27944,6 +28000,27 @@ function DkPoisonDamage(keys)
 	    	damage = damage
 	    })
 	end
+end
+
+function GetAllComboModifierAbilityByChess(u)
+	local ability_table = {}
+	local all_modifier = u:FindAllModifiers()
+	for _,m in pairs(all_modifier) do
+		local a = FindAbilityInComboModifier(m:GetName())
+		if a ~= nil then
+			table.insert(ability_table,a)
+		end
+	end
+	return ability_table
+end
+
+function FindAbilityInComboModifier(m)
+	for _,c in pairs(GameRules:GetGameModeEntity().combo_ability_type) do
+		if c and c.ability ~= nil and m == 'modifier_'..c.ability then
+			return c.ability
+		end
+	end
+	return nil
 end
 ----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------

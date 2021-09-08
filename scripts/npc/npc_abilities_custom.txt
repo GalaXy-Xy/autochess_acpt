@@ -17210,11 +17210,17 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 		"MaxLevel"	"3"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
+			"particle"	"particles/econ/wards/shadow_demon/shadow_demon_ward/shadow_demon_ward_ambient.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_dk_dragon_attack"
 			{
 				"Passive"	"1"
+				"Hidden"	"1"
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -17224,6 +17230,11 @@
 						"Function"	"DKAttack"
 						"Damage"	"%attack_damage"
 					}
+					"FireSound"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"Hero_Jakiro.LiquidFire"
+					}
 				}
 			}
 			"modifier_dk_slow"
@@ -17231,7 +17242,7 @@
 				"Passive"	"0"
 				"TextureName"	"greevil_ice_wall"
 				"IsDebuff"	"1"
-				"StatusEffectName"	"particles/status_fx/status_effect_frost.vpcf"
+				"StatusEffectName"	"particles/status_fx/status_effect_snow_heavy.vpcf"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_percent"
@@ -17254,6 +17265,8 @@
 				}
 				"ThinkInterval"	"1"
 				"Duration"	"5"
+				"EffectName"	"particles/econ/wards/shadow_demon/shadow_demon_ward/shadow_demon_ward_ambient.vpcf"
+				"EffectAttachType"	"follow_overhead"
 			}
 		}
 		"AbilitySpecial"

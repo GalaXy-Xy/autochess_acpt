@@ -16,7 +16,7 @@ function invoker_chaos_meteor_datadriven_on_spell_start(keys)
 	local velocity_per_second = point_difference_normalized * keys.TravelSpeed
 	
 	keys.caster:EmitSound("Hero_Invoker.ChaosMeteor.Cast")
-	keys.caster:EmitSound("Hero_Invoker.ChaosMeteor.Loop")
+	-- keys.caster:EmitSound("Hero_Invoker.ChaosMeteor.Loop")
 
 	--Create a particle effect consisting of the meteor falling from the sky and landing at the target point.
 	local meteor_fly_original_point = (target_point - (velocity_per_second * keys.LandTime)) + Vector (0, 0, 1000)  --Start the meteor in the air in a place where it'll be moving the same speed when flying and when rolling.
@@ -51,9 +51,9 @@ function invoker_chaos_meteor_datadriven_on_spell_start(keys)
 				chaos_meteor_unit_ability:ApplyDataDrivenModifier(chaos_meteor_dummy_unit, chaos_meteor_dummy_unit, "modifier_invoker_chaos_meteor_datadriven_unit_ability", {duration = -1})
 			end
 			
-			keys.caster:StopSound("Hero_Invoker.ChaosMeteor.Loop")
+			-- keys.caster:StopSound("Hero_Invoker.ChaosMeteor.Loop")
 			chaos_meteor_dummy_unit:EmitSound("Hero_Invoker.ChaosMeteor.Impact")
-			chaos_meteor_dummy_unit:EmitSound("Hero_Invoker.ChaosMeteor.Loop")  --Emit a sound that will follow the meteor.
+			-- chaos_meteor_dummy_unit:EmitSound("Hero_Invoker.ChaosMeteor.Loop")  --Emit a sound that will follow the meteor.
 			
 			chaos_meteor_dummy_unit:SetDayTimeVisionRange(keys.VisionDistance)
 			chaos_meteor_dummy_unit:SetNightTimeVisionRange(keys.VisionDistance)
@@ -102,7 +102,7 @@ function invoker_chaos_meteor_datadriven_on_spell_start(keys)
 					chaos_meteor_dummy_unit:SetAbsOrigin(chaos_meteor_dummy_unit:GetAbsOrigin() + chaos_meteor_velocity_per_frame)
 					if GameRules:GetGameTime() > endTime then
 						--Stop the sound, particle, and damage when the meteor disappears.
-						chaos_meteor_dummy_unit:StopSound("Hero_Invoker.ChaosMeteor.Loop")
+						-- chaos_meteor_dummy_unit:StopSound("Hero_Invoker.ChaosMeteor.Loop")
 						chaos_meteor_dummy_unit:StopSound("Hero_Invoker.ChaosMeteor.Destroy")
 						chaos_meteor_dummy_unit:RemoveModifierByName("modifier_invoker_chaos_meteor_datadriven_main_damage")
 					
